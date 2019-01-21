@@ -356,7 +356,7 @@
           
           <!--theme picker-->
           <li class="nav-item nav-theme-switch" v-show="isComponentPage">
-            <theme-picker></theme-picker>
+            <theme-configurator></theme-configurator>
           </li>
         </ul>
       </div>
@@ -364,7 +364,7 @@
   </div>
 </template>
 <script>
-  import ThemePicker from './theme-picker.vue';
+  import ThemeConfigurator from './theme-configurator.vue';
   import AlgoliaSearch from './search.vue';
   import compoLang from '../i18n/component.json';
   import Element from 'main/index.js';
@@ -388,7 +388,7 @@
     },
 
     components: {
-      ThemePicker,
+      ThemeConfigurator,
       AlgoliaSearch
     },
 
