@@ -364,7 +364,7 @@
   </div>
 </template>
 <script>
-  import ThemeConfigurator from './theme-configurator.vue';
+  import ThemeConfigurator from './theme-configurator';
   import AlgoliaSearch from './search.vue';
   import compoLang from '../i18n/component.json';
   import Element from 'main/index.js';
