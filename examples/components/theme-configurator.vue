@@ -26,6 +26,8 @@
 </style>
 
 <script>
+import { debounce } from 'throttle-debounce';
+
 export default {
   data() {
     return {
@@ -33,12 +35,14 @@ export default {
       primaryColor: ''
     };
   },
-
+  created() {
+    this.debouncedUpdateAction = debounce(300, () => this.onAction());
+  },
   methods: {
     showConfigurator() {
       this.visible = !this.visible;
     },
-    onBlur() {
+    onAction() {
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -56,6 +60,9 @@ export default {
       xhr.send(JSON.stringify({
         primaryColor: this.primaryColor
       }));
+    },
+    onBlur() {
+      this.debouncedUpdateAction();
     }
   }
 };
