@@ -4,7 +4,7 @@
     <div v-for="(config, key) in currentConfig.config" :key="key">
       <color-editor
         :config=config
-        :userConfig=userConfig[filterConfigType]
+        :userConfig=userConfig[configType]
         @onChange=onChange
       ></color-editor>
     </div>
@@ -19,59 +19,35 @@
 </style>
 
 <script>
-import { updateVars } from './utils/api.js';
 import ColorEditor from './editor/color';
+import { filterConfigType } from './utils/utils.js';
 
 export default {
   components: {
     ColorEditor
   },
   props: {
+    defaultConfig: {
+      type: Array
+    },
     currentConfig: {
       type: Object
+    },
+    userConfig: {
+      type: Object
     }
-  },
-  data() {
-    return {
-      userConfig: {
-        global: {},
-        local: {}
-      }
-    };
   },
   computed: {
     configName() {
       return this.currentConfig.name;
     },
-    filterConfigType() {
-      switch (this.configName.toLowerCase()) {
-        case 'color':
-          return 'global';
-        default:
-          return 'local';
-      }
+    configType() {
+      return filterConfigType(this.configName);
     }
   },
   methods: {
     onChange(e) {
-      this.$set(this.userConfig[this.filterConfigType], e.key, e.value);
-      this.onAction();
-    },
-    onAction() {
-      updateVars(this.userConfig)
-        .then((res) => {
-          const id = 'chalk-style';
-          let styleTag = document.getElementById(id);
-          if (!styleTag) {
-            styleTag = document.createElement('style');
-            styleTag.setAttribute('id', id);
-            document.head.appendChild(styleTag);
-          }
-          styleTag.innerText = res.replace(/@font-face{[^}]+}/, '');
-        })
-        .catch((err) => {
-          console.log('err: ', err);
-        });
+      this.$emit('onChange', e);
     }
   }
 };
