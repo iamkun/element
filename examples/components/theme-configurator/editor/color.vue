@@ -25,6 +25,9 @@ export default {
     },
     userConfig: {
       type: Object
+    },
+    golbalColor: {
+      type: Object
     }
   },
   data() {
@@ -33,8 +36,8 @@ export default {
     };
   },
   mounted() {
-    if (this.config.value.indexOf('#') === 0) {
-      this.color = this.config.value;
+    if (this.displayValue.indexOf('#') === 0) {
+      this.color = this.displayValue;
     }
   },
   computed: {

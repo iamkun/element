@@ -5,6 +5,9 @@
       <div v-if="currentConfig">
         <main-panel
           :currentConfig = "currentConfig"
+          :defaultConfig = "defaultConfig"
+          :userConfig = "userConfig"
+          @onChange = "userConfigChange"
         ></main-panel>
       </div>
       <div v-else>
@@ -31,8 +34,9 @@
 </style>
 
 <script>
-import { getVars } from './utils/api.js';
+import { getVars, updateVars } from './utils/api.js';
 import mainPanel from './main';
+import { filterConfigType } from './utils/utils.js';
 
 export default {
   components: {
@@ -42,7 +46,11 @@ export default {
     return {
       visible: false,
       defaultConfig: null,
-      currentConfig: null
+      currentConfig: null,
+      userConfig: {
+        global: {},
+        local: {}
+      }
     };
   },
   mounted() {
@@ -61,8 +69,28 @@ export default {
     },
     filterCurrentConfig() {
       this.currentConfig = this.defaultConfig.find((config) => {
-        return config.name.toLowerCase() === this.$route.path.split('/').pop().toLowerCase();
+        return config.name === this.$route.path.split('/').pop().toLowerCase();
       });
+    },
+    userConfigChange(e) {
+      this.$set(this.userConfig[filterConfigType(this.currentConfig.name)], e.key, e.value);
+      this.onAction();
+    },
+    onAction() {
+      updateVars(this.userConfig)
+        .then((res) => {
+          const id = 'chalk-style';
+          let styleTag = document.getElementById(id);
+          if (!styleTag) {
+            styleTag = document.createElement('style');
+            styleTag.setAttribute('id', id);
+            document.head.appendChild(styleTag);
+          }
+          styleTag.innerText = res.replace(/@font-face{[^}]+}/, '');
+        })
+        .catch((err) => {
+          console.log('err: ', err);
+        });
     }
   },
   watch: {
