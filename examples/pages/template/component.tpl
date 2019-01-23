@@ -160,6 +160,13 @@
       }
     }
   }
+  .loadingClass {
+    z-index: 0!important;
+    .el-loading-spinner {
+      top: 0%;
+      margin-top: 30%;
+    }
+  }
 </style>
 <template>
   <el-scrollbar class="page-component__scroll" ref="componentScrollBar">
@@ -200,7 +207,8 @@
         scrollTop: 0,
         showHeader: true,
         componentScrollBar: null,
-        componentScrollBoxElement: null
+        componentScrollBoxElement: null,
+        loadingInstance: null
       };
     },
     watch: {
@@ -260,6 +268,18 @@
     created() {
       bus.$on('navFade', val => {
         this.navFaded = val;
+      });
+      bus.$on('user-theme-config-loading', val => {
+        if (val) {
+          this.loadingInstance = this.$loading(
+            {
+              target: '.page-component__content .content',
+              customClass: 'loadingClass'
+            }
+          );
+        } else {
+          this.loadingInstance && this.loadingInstance.close();
+        }
       });
       window.addEventListener('hashchange', () => {
         if (location.href.match(/#/g).length < 2) {
