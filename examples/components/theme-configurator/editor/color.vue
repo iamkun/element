@@ -83,7 +83,6 @@ import Mixin from './mixin';
 import { getColorFromName, getStyleDisplayName, invertColor } from '../utils/utils.js';
 
 export default {
-  mixins: [Mixin],
   props: {
     config: {
       type: Object
@@ -103,6 +102,7 @@ export default {
       pickerColor: ''
     };
   },
+  mixins: [Mixin],
   watch: {
     displayValue: {
       immediate: true,
