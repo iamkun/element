@@ -3,6 +3,7 @@
     <span>{{configName}}</span>
     <div v-for="(config, key) in currentConfig.config" :key="key">
       <color-editor
+        :componentName=configName
         :config=config
         :userConfig=userConfig[configType]
         :golbalColor=globalValue.color
