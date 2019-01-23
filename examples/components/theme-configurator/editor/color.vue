@@ -31,11 +31,13 @@
             :value=displayValue
             readonly
             slot="reference"
+            @click.native="onInputClick"
           ></el-input>
         </el-popover>
       </div>
       <div class="content-20">
         <el-color-picker 
+          ref="colorPicker"
           class="colorPicker"
           v-model="pickerColor" 
           @change=onPickerChange
@@ -46,7 +48,9 @@
 </template>
 
 <style lang="postcss">
-
+input {
+  cursor: pointer;
+}
 .colorPicker {
   margin-left: 10px;
   vertical-align: bottom;
@@ -140,6 +144,9 @@ export default {
     onListColorClick(e) {
       this.onChange(e.value);
       this.$refs.popover && this.$refs.popover.doClose();
+    },
+    onInputClick() {
+      this.$refs.colorPicker && this.$refs.colorPicker.handleTrigger();
     },
     onPickerChange(e) {
       this.onChange(e);
