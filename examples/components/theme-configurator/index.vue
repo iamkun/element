@@ -38,7 +38,8 @@
 import bus from '../../bus';
 import { getVars, updateVars } from './utils/api.js';
 import mainPanel from './main';
-import { filterConfigType, filterGlobalValue } from './utils/utils.js';
+import { filterConfigType, filterGlobalValue, updateDomHeadStyle } from './utils/utils.js';
+import DocStyle from './docStyle';
 
 export default {
   components: {
@@ -55,6 +56,7 @@ export default {
       }
     };
   },
+  mixin: [DocStyle],
   mounted() {
     getVars()
       .then((res) => {
@@ -86,20 +88,16 @@ export default {
     onAction() {
       updateVars(this.userConfig)
         .then((res) => {
-          const id = 'chalk-style';
-          let styleTag = document.getElementById(id);
-          if (!styleTag) {
-            styleTag = document.createElement('style');
-            styleTag.setAttribute('id', id);
-            document.head.appendChild(styleTag);
-          }
-          styleTag.innerText = res.replace(/@font-face{[^}]+}/, '');
-          bus.$emit('user-theme-config-update', this.userConfig);
-          window.userThemeConfig = this.userConfig;
+          updateDomHeadStyle('chalk-style', res);
         })
         .catch((err) => {
           console.log('err: ', err);
         });
+    },
+    updateDocs() {
+      bus.$emit('user-theme-config-update', this.userConfig);
+      window.userThemeConfig = this.userConfig;
+      this.updateDocStyle(this.userConfig);
     }
   },
   watch: {

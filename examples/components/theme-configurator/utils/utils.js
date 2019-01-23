@@ -56,3 +56,13 @@ export const invertColor = (color) => {
   c = c.length === 3 ? c.replace(/(.)(.)(.)/, '$1$1$2$2$3$3') : c;
   return (parseInt(c, 16) > 0xfffffe) ? '#000' : '#fff';
 };
+
+export const updateDomHeadStyle = (id, styleContent) => {
+  let styleTag = document.getElementById(id);
+  if (!styleTag) {
+    styleTag = document.createElement('style');
+    styleTag.setAttribute('id', id);
+    document.head.appendChild(styleTag);
+  }
+  styleTag.innerText = styleContent.replace(/@font-face{[^}]+}/, '');
+};
