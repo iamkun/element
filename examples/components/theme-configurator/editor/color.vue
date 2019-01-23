@@ -146,6 +146,7 @@ export default {
       this.$refs.popover && this.$refs.popover.doClose();
     },
     onInputClick() {
+      if (this.isGlobalColor) return;
       this.$refs.colorPicker && this.$refs.colorPicker.handleTrigger();
     },
     onPickerChange(e) {

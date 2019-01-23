@@ -54,5 +54,5 @@ export const getStyleDisplayName = (config, componentName) => {
 export const invertColor = (color) => {
   let c = color.replace('#', '');
   c = c.length === 3 ? c.replace(/(.)(.)(.)/, '$1$1$2$2$3$3') : c;
-  return (parseInt(c, 16) > 0xffffff / 2) ? '#000' : '#fff';
+  return (parseInt(c, 16) > 0xfffffe) ? '#000' : '#fff';
 };
