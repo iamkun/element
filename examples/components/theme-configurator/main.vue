@@ -5,6 +5,7 @@
       <color-editor
         :config=config
         :userConfig=userConfig[configType]
+        :golbalColor=globalValue.color
         @onChange=onChange
       ></color-editor>
     </div>
@@ -34,6 +35,9 @@ export default {
       type: Object
     },
     userConfig: {
+      type: Object
+    },
+    globalValue: {
       type: Object
     }
   },

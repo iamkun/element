@@ -15,14 +15,21 @@ export const filterGlobalValue = (defaultConfig, userConfig) => {
     defaultConfig.find((config) => {
       return config.name === global;
     }).config.forEach((c) => {
-      configObj[c.key] = c.value;
+      configObj[c.key] = c;
     });
     valueObject[global] = configObj;
     Object.keys(configObj).forEach((c) => {
       if (userConfig.global[c]) {
-        configObj[c] = userConfig.global[c];
+        configObj[c].value = userConfig.global[c];
       }
     });
   });
   return valueObject;
+};
+
+export const getColorFromName = (displayValue, golbalColor) => {
+  if (displayValue.startsWith('$')) {
+    return golbalColor[displayValue].value;
+  }
+  return displayValue;
 };
