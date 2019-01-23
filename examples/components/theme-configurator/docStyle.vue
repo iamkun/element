@@ -9,9 +9,6 @@ export default {
       theme: ORIGINAL_THEME
     };
   },
-  mounted() {
-    console.log(123);
-  },
   methods: {
     updateDocStyle(e) {
       const val = e.global['$--color-primary'];

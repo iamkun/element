@@ -56,7 +56,7 @@ export default {
       }
     };
   },
-  mixin: [DocStyle],
+  mixins: [DocStyle],
   mounted() {
     getVars()
       .then((res) => {
@@ -89,14 +89,15 @@ export default {
       updateVars(this.userConfig)
         .then((res) => {
           updateDomHeadStyle('chalk-style', res);
+          this.updateDocs();
         })
         .catch((err) => {
           console.log('err: ', err);
         });
     },
     updateDocs() {
-      bus.$emit('user-theme-config-update', this.userConfig);
       window.userThemeConfig = this.userConfig;
+      bus.$emit('user-theme-config-update');
       this.updateDocStyle(this.userConfig);
     }
   },
