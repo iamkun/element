@@ -13,9 +13,7 @@
   };
   export default {
     created() {
-      bus.$on('user-theme-config-update', () => {
-        this.setGlobal();
-      });
+      bus.$on('user-theme-config-update', this.setGlobal);
     },
     mounted() {
       this.setGlobal();
@@ -40,8 +38,7 @@
               domColorUpdate(domColorMap[color], value[color])
             }
           });
-        },
-        deep: true
+        }
       }
     },
   }

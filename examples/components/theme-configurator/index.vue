@@ -96,7 +96,7 @@ export default {
         });
     },
     updateDocs() {
-      window.userThemeConfig = this.userConfig;
+      window.userThemeConfig = JSON.parse(JSON.stringify(this.userConfig));
       bus.$emit('user-theme-config-update');
       this.updateDocStyle(this.userConfig);
     }
