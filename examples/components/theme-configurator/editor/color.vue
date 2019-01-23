@@ -17,6 +17,7 @@
 </style>
 
 <script>
+import { getColorFromName } from '../utils/utils.js';
 
 export default {
   props: {
@@ -35,14 +36,19 @@ export default {
       color: ''
     };
   },
-  mounted() {
-    if (this.displayValue.indexOf('#') === 0) {
-      this.color = this.displayValue;
+  watch: {
+    displayValue: {
+      immediate: true,
+      handler(value) {
+        if (value.startsWith('#')) {
+          this.color = value;
+        }
+      }
     }
   },
   computed: {
     displayValue() {
-      return this.userConfig[this.config.key] || this.config.value;
+      return getColorFromName(this.userConfig[this.config.key] || this.config.value, this.golbalColor);
     }
   },
   methods: {

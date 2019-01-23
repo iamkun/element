@@ -7,6 +7,7 @@
           :currentConfig = "currentConfig"
           :defaultConfig = "defaultConfig"
           :userConfig = "userConfig"
+          :globalValue = "globalValue"
           @onChange = "userConfigChange"
         ></main-panel>
       </div>
@@ -36,7 +37,7 @@
 <script>
 import { getVars, updateVars } from './utils/api.js';
 import mainPanel from './main';
-import { filterConfigType } from './utils/utils.js';
+import { filterConfigType, filterGlobalValue } from './utils/utils.js';
 
 export default {
   components: {
@@ -62,6 +63,11 @@ export default {
       .catch((err) => {
         console.log('err: ', err);
       });
+  },
+  computed: {
+    globalValue() {
+      return filterGlobalValue(this.defaultConfig, this.userConfig);
+    }
   },
   methods: {
     showConfigurator() {
