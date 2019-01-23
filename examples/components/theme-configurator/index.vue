@@ -86,14 +86,19 @@ export default {
       this.onAction();
     },
     onAction() {
+      this.triggerComponentLoading(true);
       updateVars(this.userConfig)
         .then((res) => {
           updateDomHeadStyle('chalk-style', res);
           this.updateDocs();
+          this.triggerComponentLoading(false);
         })
         .catch((err) => {
           console.log('err: ', err);
         });
+    },
+    triggerComponentLoading(val) {
+      bus.$emit('user-theme-config-loading', val);
     },
     updateDocs() {
       window.userThemeConfig = JSON.parse(JSON.stringify(this.userConfig));
