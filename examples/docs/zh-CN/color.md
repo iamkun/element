@@ -1,3 +1,46 @@
+<script>
+  import bus from '../../bus';
+  const domColorMap = {
+    '$--color-primary': '.bg-blue',
+    '$--color-success': '.bg-success',
+    '$--color-warning': '.bg-warning',
+    '$--color-danger': '.bg-danger',
+    '$--color-info': '.bg-info'
+  };
+  const domColorUpdate = (domClass, color) => {
+    document.querySelectorAll(`.demo-color-box${domClass}`)[0].style.backgroundColor = color;
+    document.querySelectorAll(`.demo-color-box${domClass} .value`)[0].innerText = color;
+  };
+  export default {
+    created() {
+      bus.$on('user-theme-config-update', (e) => {
+        this.global = e.global;
+      });
+    },
+    mounted() {
+      if (window.userThemeConfig) {
+        this.global = window.userThemeConfig.global;
+      }
+    },
+    data() {
+      return {
+        global: {},
+      }
+    },
+    watch: {
+      global: {
+        handler(value) {
+          Object.keys(value).forEach((color) => {
+            if (domColorMap[color]) {
+              domColorUpdate(domColorMap[color], value[color])
+            }
+          });
+        }
+      }
+    },
+  }
+</script>
+
 <style>
   .demo-color-box {
     border-radius: 4px;

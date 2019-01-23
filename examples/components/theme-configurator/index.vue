@@ -35,6 +35,7 @@
 </style>
 
 <script>
+import bus from '../../bus';
 import { getVars, updateVars } from './utils/api.js';
 import mainPanel from './main';
 import { filterConfigType, filterGlobalValue } from './utils/utils.js';
@@ -93,6 +94,8 @@ export default {
             document.head.appendChild(styleTag);
           }
           styleTag.innerText = res.replace(/@font-face{[^}]+}/, '');
+          bus.$emit('user-theme-config-update', this.userConfig);
+          window.userThemeConfig = this.userConfig;
         })
         .catch((err) => {
           console.log('err: ', err);
