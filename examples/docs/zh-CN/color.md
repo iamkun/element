@@ -13,13 +13,18 @@
   };
   export default {
     created() {
-      bus.$on('user-theme-config-update', (e) => {
-        this.global = e.global;
+      bus.$on('user-theme-config-update', () => {
+        this.setGlobal();
       });
     },
     mounted() {
-      if (window.userThemeConfig) {
-        this.global = window.userThemeConfig.global;
+      this.setGlobal();
+    },
+    methods: {
+      setGlobal() {
+        if (window.userThemeConfig) {
+          this.global = window.userThemeConfig.global;
+        }
       }
     },
     data() {
@@ -35,7 +40,8 @@
               domColorUpdate(domColorMap[color], value[color])
             }
           });
-        }
+        },
+        deep: true
       }
     },
   }
