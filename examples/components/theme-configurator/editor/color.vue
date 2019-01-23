@@ -1,6 +1,6 @@
 <template>
   <div >
-    <span>{{config.name + config.key}}</span>
+    <span>{{displayName}}</span>
     <el-input
       :value=displayValue
     ></el-input>
@@ -17,7 +17,7 @@
 </style>
 
 <script>
-import { getColorFromName } from '../utils/utils.js';
+import { getColorFromName, getStyleDisplayName } from '../utils/utils.js';
 
 export default {
   props: {
@@ -29,6 +29,9 @@ export default {
     },
     golbalColor: {
       type: Object
+    },
+    componentName: {
+      type: String
     }
   },
   data() {
@@ -49,6 +52,9 @@ export default {
   computed: {
     displayValue() {
       return getColorFromName(this.userConfig[this.config.key] || this.config.value, this.golbalColor);
+    },
+    displayName() {
+      return getStyleDisplayName(this.config, this.componentName);
     }
   },
   methods: {

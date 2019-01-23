@@ -33,3 +33,20 @@ export const getColorFromName = (displayValue, golbalColor) => {
   }
   return displayValue;
 };
+
+const displayNameMap = {
+  '-border-color': '边框颜色',
+  '-font-color': '文字颜色',
+  '-background-color': '背景颜色'
+};
+
+export const getStyleDisplayName = (config, componentName) => {
+  if (config.name !== '[]') {
+    return config.name.replace(/\[?\]?/, '').split(',')[0];
+  }
+  let displayName = config.key.replace(`$--${componentName}-`, '').replace();
+  Object.keys(displayNameMap).forEach((name) => {
+    displayName = displayName.replace(name, displayNameMap[name]);
+  });
+  return displayName;
+};
