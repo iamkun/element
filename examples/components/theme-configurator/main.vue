@@ -6,12 +6,15 @@
         v-if="config.type === 'color'"
         :componentName=configName
         :config=config
-        :userConfig=userConfig[configType]
+        :userConfig=userConfigByType
         :golbalColor=globalValue.color
         @onChange=onChange
       ></color-editor>
       <font-weight-editor
         v-if="config.type === 'fontWeight'"
+        :userConfig=userConfigByType
+        :config=config
+        @onChange=onChange
       ></font-weight-editor>
     </div>
   </div>
@@ -52,8 +55,8 @@ export default {
     configName() {
       return this.currentConfig.name;
     },
-    configType() {
-      return filterConfigType(this.configName);
+    userConfigByType() {
+      return this.userConfig[filterConfigType(this.configName)];
     }
   },
   methods: {
