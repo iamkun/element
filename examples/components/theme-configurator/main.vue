@@ -3,12 +3,16 @@
     <span>{{configName}}</span>
     <div v-for="(config, key) in currentConfig.config" :key="key">
       <color-editor
+        v-if="config.type === 'color'"
         :componentName=configName
         :config=config
         :userConfig=userConfig[configType]
         :golbalColor=globalValue.color
         @onChange=onChange
       ></color-editor>
+      <font-weight-editor
+        v-if="config.type === 'fontWeight'"
+      ></font-weight-editor>
     </div>
   </div>
 </template>
@@ -22,11 +26,13 @@
 
 <script>
 import ColorEditor from './editor/color';
+import fontWeightEditor from './editor/fontWeight';
 import { filterConfigType } from './utils/utils.js';
 
 export default {
   components: {
-    ColorEditor
+    ColorEditor,
+    fontWeightEditor
   },
   props: {
     defaultConfig: {
