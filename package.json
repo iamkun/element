@@ -29,7 +29,11 @@
   },
   "faas": {
     "domain": "element-theme",
-    "public": "temp_web/element"
+    "public": "dist",
+    "build": [
+      "yarn",
+      "npm run dist"
+    ]
   },
   "repository": {
     "type": "git",
