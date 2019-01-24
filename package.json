@@ -29,11 +29,10 @@
   },
   "faas": {
     "domain": "element-theme",
-    "public": "dist",
+    "public": "examples/element-ui",
     "build": [
       "yarn",
-      "npm run dist",
-      "ls"
+      "npm run deploy:build"
     ]
   },
   "engines": {
