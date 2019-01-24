@@ -33,7 +33,10 @@
     "build": [
       "yarn",
       "npm run dist"
-    ]
+    ],
+    "engines": {
+      "node": "8"
+    }
   },
   "repository": {
     "type": "git",
