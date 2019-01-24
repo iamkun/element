@@ -1,6 +1,7 @@
 export const filterConfigType = (name) => {
   switch (name) {
     case 'color':
+    case 'typography':
       return 'global';
     default:
       return 'local';
