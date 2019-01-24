@@ -12,7 +12,9 @@
       ></color-editor>
       <font-weight-editor
         v-if="config.type === 'fontWeight'"
+        :componentName=configName
         :userConfig=userConfigByType
+        :golbalValue=globalValue
         :config=config
         @onChange=onChange
       ></font-weight-editor>

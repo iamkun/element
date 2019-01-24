@@ -10,7 +10,7 @@ export const filterConfigType = (name) => {
 
 export const filterGlobalValue = (defaultConfig, userConfig) => {
   const valueObject = {};
-  const globalArr = ['color'];
+  const globalArr = ['color', 'typography'];
   globalArr.forEach((global) => {
     const configObj = {};
     defaultConfig.find((config) => {
@@ -38,18 +38,19 @@ export const getColorFromName = (displayValue, golbalColor) => {
 const displayNameMap = {
   '-border-color': '边框颜色',
   '-font-color': '文字颜色',
-  '-background-color': '背景颜色'
+  '-background-color': '背景颜色',
+  '-font-weight': '文字粗细'
 };
 
 export const getStyleDisplayName = (config, componentName) => {
   if (config.name !== '[]') {
     return config.name.replace(/\[?\]?/, '').split(',')[0];
   }
-  let displayName = config.key.replace(`$--${componentName}-`, '').replace();
+  let displayName = config.key.replace(`$--${componentName}`, '').replace();
   Object.keys(displayNameMap).forEach((name) => {
     displayName = displayName.replace(name, displayNameMap[name]);
   });
-  return displayName;
+  return displayName.replace(/-/g, '');
 };
 
 export const invertColor = (color) => {
