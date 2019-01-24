@@ -80,7 +80,7 @@ input {
 
 <script>
 import Mixin from './mixin';
-import { getColorFromName, getStyleDisplayName, invertColor } from '../utils/utils.js';
+import { getStyleDisplayValue, getStyleDisplayName, invertColor } from '../utils/utils.js';
 
 export default {
   props: {
@@ -115,7 +115,7 @@ export default {
   },
   computed: {
     displayValue() {
-      return getColorFromName(this.colorValue, this.golbalColor);
+      return getStyleDisplayValue(this.colorValue, this.golbalColor);
     },
     colorValue() {
       return this.userConfig[this.config.key] || this.config.value;
