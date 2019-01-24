@@ -48,12 +48,6 @@ import { getStyleDisplayName } from '../utils/utils.js';
 
 export default {
   props: {
-    config: {
-      type: Object
-    },
-    userConfig: {
-      type: Object
-    },
     componentName: {
       type: String
     },
@@ -79,12 +73,6 @@ export default {
   methods: {
     onSelectChange(e) {
       this.onChange(e);
-    },
-    onChange(value) {
-      this.$emit('onChange', {
-        key: this.config.key,
-        value
-      });
     }
   },
   created() {

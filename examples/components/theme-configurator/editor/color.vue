@@ -84,12 +84,6 @@ import { getStyleDisplayValue, getStyleDisplayName, invertColor } from '../utils
 
 export default {
   props: {
-    config: {
-      type: Object
-    },
-    userConfig: {
-      type: Object
-    },
     golbalColor: {
       type: Object
     },
@@ -148,12 +142,6 @@ export default {
     },
     onPickerChange(e) {
       this.onChange(e);
-    },
-    onChange(value) {
-      this.$emit('onChange', {
-        key: this.config.key,
-        value
-      });
     }
   }
 };
