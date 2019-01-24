@@ -31,7 +31,6 @@
     "domain": "element-theme",
     "public": "dist",
     "build": [
-      "nvm use v8",
       "yarn",
       "npm run dist"
     ],
