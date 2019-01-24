@@ -28,7 +28,7 @@
     "test:watch": "npm run build:theme && cross-env BABEL_ENV=test karma start test/unit/karma.conf.js"
   },
   "faas": {
-    "domain": "element",
+    "domain": "element-theme",
     "public": "temp_web/element"
   },
   "repository": {
