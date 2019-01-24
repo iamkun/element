@@ -20,3 +20,12 @@
       vertical-align: bottom;
     }
 </style>
+<script>
+export default {
+  computed: {
+    mergedValue() {
+      return this.userConfig[this.config.key] || this.config.value;
+    }
+  }
+};
+</script>

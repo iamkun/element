@@ -115,16 +115,13 @@ export default {
   },
   computed: {
     displayValue() {
-      return getStyleDisplayValue(this.colorValue, this.golbalColor);
-    },
-    colorValue() {
-      return this.userConfig[this.config.key] || this.config.value;
+      return getStyleDisplayValue(this.mergedValue, this.golbalColor);
     },
     displayName() {
       return getStyleDisplayName(this.config, this.componentName);
     },
     isGlobalColor() {
-      return this.colorValue.startsWith('$');
+      return this.mergedValue.startsWith('$');
     },
     popoverTrigger() {
       return this.isGlobalColor ? 'click' : 'manual';
