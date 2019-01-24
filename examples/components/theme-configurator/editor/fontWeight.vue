@@ -56,6 +56,9 @@ export default {
     },
     componentName: {
       type: String
+    },
+    golbalValue: {
+      type: Object
     }
   },
   data() {
@@ -68,6 +71,9 @@ export default {
   computed: {
     displayName() {
       return getStyleDisplayName(this.config, this.componentName);
+    },
+    isGlobalInputValue() {
+      return this.config.value.startsWith('$');
     }
   },
   methods: {
@@ -88,7 +94,26 @@ export default {
         label: weight
       });
     });
-    this.value = this.config.value;
+    const golbalTypography = this.golbalValue.typography;
+    if (this.isGlobalInputValue && golbalTypography) {
+      Object.keys(golbalTypography).forEach((font) => {
+        if (font.includes('font-weight')) {
+          const weight = golbalTypography[font];
+          this.options.push({
+            value: weight.key,
+            label: getStyleDisplayName(weight)
+          });
+        }
+      });
+    }
+  },
+  watch: {
+    'config.value': {
+      immediate: true,
+      handler(value) {
+        this.value = value;
+      }
+    }
   }
 };
 </script>
