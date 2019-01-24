@@ -5,7 +5,15 @@
     '$--color-success': '.bg-success',
     '$--color-warning': '.bg-warning',
     '$--color-danger': '.bg-danger',
-    '$--color-info': '.bg-info'
+    '$--color-info': '.bg-info',
+    '$--color-text-primary': '.bg-text-primary',
+    '$--color-text-regular': '.bg-text-regular',
+    '$--color-text-secondary': '.bg-text-secondary',
+    '$--color-text-placeholder': '.bg-text-placeholder',
+    '$--border-color-base': '.bg-border-base',
+    '$--border-color-light': '.bg-border-light',
+    '$--border-color-lighter': '.bg-border-lighter',
+    '$--border-color-extra-light': '.bg-border-extra-light'
   };
   const domColorUpdate = (domClass, color) => {
     document.querySelectorAll(`.demo-color-box${domClass}`)[0].style.backgroundColor = color;
