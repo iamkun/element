@@ -32,7 +32,8 @@
     "public": "dist",
     "build": [
       "yarn",
-      "npm run dist"
+      "npm run dist",
+      "ls"
     ]
   },
   "engines": {
