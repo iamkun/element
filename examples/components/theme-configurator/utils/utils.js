@@ -28,9 +28,9 @@ export const filterGlobalValue = (defaultConfig, userConfig) => {
   return valueObject;
 };
 
-export const getColorFromName = (displayValue, golbalColor) => {
+export const getStyleDisplayValue = (displayValue, global) => {
   if (displayValue.startsWith('$')) {
-    return golbalColor[displayValue].value;
+    return global[displayValue].value;
   }
   return displayValue;
 };

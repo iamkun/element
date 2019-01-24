@@ -74,6 +74,9 @@ export default {
     },
     isGlobalInputValue() {
       return this.config.value.startsWith('$');
+    },
+    weightValue() {
+      return this.userConfig[this.config.key] || this.config.value;
     }
   },
   methods: {
@@ -111,7 +114,7 @@ export default {
     'config.value': {
       immediate: true,
       handler(value) {
-        this.value = value;
+        this.value = this.weightValue;
       }
     }
   }
