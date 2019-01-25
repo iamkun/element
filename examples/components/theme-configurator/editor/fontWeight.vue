@@ -73,32 +73,34 @@ export default {
   methods: {
     onSelectChange(e) {
       this.onChange(e);
-    }
-  },
-  created() {
-    defaultFontWeight.forEach((weight) => {
-      this.options.push({
-        value: weight,
-        label: weight
+    },
+    initSelectOption() {
+      this.options = [];
+      defaultFontWeight.forEach((weight) => {
+        this.options.push({
+          value: weight,
+          label: weight
+        });
       });
-    });
-    const golbalTypography = this.golbalValue.typography;
-    if (this.isGlobalInputValue && golbalTypography) {
-      Object.keys(golbalTypography).forEach((font) => {
-        if (font.includes('font-weight')) {
-          const weight = golbalTypography[font];
-          this.options.push({
-            value: weight.key,
-            label: getStyleDisplayName(weight)
-          });
-        }
-      });
+      const golbalTypography = this.golbalValue.typography;
+      if (this.isGlobalInputValue && golbalTypography) {
+        Object.keys(golbalTypography).forEach((font) => {
+          if (font.includes('font-weight')) {
+            const weight = golbalTypography[font];
+            this.options.push({
+              value: weight.key,
+              label: getStyleDisplayName(weight)
+            });
+          }
+        });
+      }
     }
   },
   watch: {
     'config.value': {
       immediate: true,
       handler(value) {
+        this.initSelectOption();
         this.value = this.mergedValue;
       }
     }
