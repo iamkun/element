@@ -8,7 +8,10 @@
   }
 </style>
 <script>
+
 import bus from '../../bus.js';
+import './progress.js';
+
 export default {
   data() {
     return {
@@ -21,6 +24,7 @@ export default {
       if (val) {
         this.count++;
         if (this.count > 1) return;
+        this.$bar.start();
         this.loadingInstance = this.$loading(
           {
             target: '.page-component__content .content',
@@ -30,6 +34,7 @@ export default {
       } else {
         this.count--;
         if (this.count) return;
+        this.$bar.finish();
         this.loadingInstance && this.loadingInstance.close();
       }
     });
