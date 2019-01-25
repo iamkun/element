@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-button type="text" @click.stop="showConfigurator">Theme</el-button>
-    <div v-if="visible" class="configurator">
+    <div v-if="visible" class="configurator" ref="configurator">
       <div v-if="currentConfig">
         <main-panel
           :currentConfig = "currentConfig"
@@ -11,7 +11,7 @@
           @onChange = "userConfigChange"
         ></main-panel>
       </div>
-      <div v-else>
+      <div v-if="init && !currentConfig">
         <span>当前页面没有可配置的项目</span>
       </div>
     </div>
@@ -47,6 +47,7 @@ export default {
   },
   data() {
     return {
+      init: false,
       visible: false,
       defaultConfig: null,
       currentConfig: null,
@@ -57,16 +58,6 @@ export default {
     };
   },
   mixins: [DocStyle],
-  mounted() {
-    getVars()
-      .then((res) => {
-        this.defaultConfig = res;
-        this.filterCurrentConfig();
-      })
-      .catch((err) => {
-        console.log('err: ', err);
-      });
-  },
   computed: {
     globalValue() {
       return filterGlobalValue(this.defaultConfig, this.userConfig);
@@ -75,6 +66,24 @@ export default {
   methods: {
     showConfigurator() {
       this.visible = !this.visible;
+      if (this.init) return;
+      this.$nextTick(() => {
+        const loading = this.$loading({
+          target: this.$refs.configurator
+        });
+        getVars()
+          .then((res) => {
+            this.defaultConfig = res;
+            this.filterCurrentConfig();
+          })
+          .catch((err) => {
+            console.log('err: ', err);
+          })
+          .then(() => {
+            this.init = true;
+            loading.close();
+          });
+      });
     },
     filterCurrentConfig() {
       this.currentConfig = this.defaultConfig.find((config) => {
@@ -91,10 +100,12 @@ export default {
         .then((res) => {
           updateDomHeadStyle('chalk-style', res);
           this.updateDocs();
-          this.triggerComponentLoading(false);
         })
         .catch((err) => {
           console.log('err: ', err);
+        })
+        .then(() => {
+          this.triggerComponentLoading(false);
         });
     },
     triggerComponentLoading(val) {
