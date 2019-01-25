@@ -443,14 +443,16 @@
       };
       xhr.open('GET', '/versions.json');
       xhr.send();
+      let primaryLast = '#409EFF';
       bus.$on('user-theme-config-update', (val) => {
         const primaryColor = val.global['$--color-primary'];
         if (!primaryColor) return;
         const base64svg = 'data:image/svg+xml;base64,';
         const imgSet = document.querySelectorAll('h1 img');
         imgSet.forEach((img) => {
-          img.src = `${base64svg}${window.btoa(window.atob(img.src.replace(base64svg, '')).replace('#409EFF', primaryColor))}`;
+          img.src = `${base64svg}${window.btoa(window.atob(img.src.replace(base64svg, '')).replace(primaryLast, primaryColor))}`;
         });
+        primaryLast = primaryColor;
       });
     }
   };
