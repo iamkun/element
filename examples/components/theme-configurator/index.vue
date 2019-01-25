@@ -55,7 +55,8 @@ export default {
       userConfig: {
         global: {},
         local: {}
-      }
+      },
+      lastApply: 0
     };
   },
   mixins: [DocStyle, Loading],
@@ -95,12 +96,18 @@ export default {
       this.$set(this.userConfig[filterConfigType(this.currentConfig.name)], e.key, e.value);
       this.onAction();
     },
+    applyStyle(res, time) {
+      if (time < this.lastApply) return;
+      updateDomHeadStyle('chalk-style', res);
+      this.updateDocs();
+      this.lastApply = time;
+    },
     onAction() {
       this.triggerComponentLoading(true);
+      const time = +new Date();
       updateVars(this.userConfig)
         .then((res) => {
-          updateDomHeadStyle('chalk-style', res);
-          this.updateDocs();
+          this.applyStyle(res, time);
         })
         .catch((err) => {
           console.log('err: ', err);
