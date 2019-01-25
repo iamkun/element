@@ -22,6 +22,10 @@ const xhr = (method, url, data = null) => {
     xhr.onerror = () => {
       reject(xhr.statusText);
     };
+    xhr.ontimeout = () => {
+      xhr.abort();
+      reject('timeout');
+    };
     xhr.send(JSON.stringify(data));
   });
 };
