@@ -40,6 +40,7 @@ import { getVars, updateVars } from './utils/api.js';
 import mainPanel from './main';
 import { filterConfigType, filterGlobalValue, updateDomHeadStyle } from './utils/utils.js';
 import DocStyle from './docStyle';
+import Loading from './loading';
 
 export default {
   components: {
@@ -57,7 +58,7 @@ export default {
       }
     };
   },
-  mixins: [DocStyle],
+  mixins: [DocStyle, Loading],
   computed: {
     globalValue() {
       return filterGlobalValue(this.defaultConfig, this.userConfig);
