@@ -3,7 +3,7 @@ const xhr = (method, url, data = null) => {
     const xhr = new XMLHttpRequest();
     xhr.open(method, url);
     xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.timeout = 4000;
+    xhr.timeout = 10000;
     xhr.onload = () => {
       if (xhr.readyState === 4) {
         if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
