@@ -16,7 +16,7 @@ export default {
       if (typeof val !== 'string') return;
       const getHandler = (variable, id) => {
         return () => {
-          let newStyle = this.updateStyle(this[variable], this.theme, e.global['$--color-primary']);
+          let newStyle = this.updateStyle(this[variable], ORIGINAL_THEME, val);
           updateDomHeadStyle(id, newStyle);
         };
       };
