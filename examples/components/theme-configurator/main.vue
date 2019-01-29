@@ -25,11 +25,13 @@
 <script>
 import ColorEditor from './editor/color';
 import fontWeightEditor from './editor/fontWeight';
+import fontSizeEditor from './editor/fontSize';
 import { filterConfigType } from './utils/utils.js';
 
 export default {
   components: {
     ColorEditor,
+    fontSizeEditor,
     fontWeightEditor
   },
   props: {
@@ -61,6 +63,8 @@ export default {
           return ColorEditor;
         case 'fontWeight':
           return fontWeightEditor;
+        case 'fontSize':
+          return fontSizeEditor;
         default:
           return;
       }
