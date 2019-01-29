@@ -85,6 +85,7 @@ export default {
     showConfigurator() {
       this.visible = !this.visible;
       bus.$emit('user-theme-config-visible', this.visible);
+      window.userThemeConfigVisible = Boolean(this.visible);
       if (this.init) return;
       this.$nextTick(() => {
         const loading = this.$loading({

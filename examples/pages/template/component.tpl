@@ -306,6 +306,9 @@
       });
     },
     mounted() {
+      if (window.userThemeConfigVisible) {
+        this.isThemeConfigVisible = window.userThemeConfigVisible;
+      }
       this.componentScrollBar = this.$refs.componentScrollBar;
       this.componentScrollBox = this.componentScrollBar.$el.querySelector('.el-scrollbar__wrap');
       this.throttledScrollHandler = throttle(300, this.handleScroll);
