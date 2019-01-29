@@ -1,27 +1,29 @@
 <template>
   <div>
     <el-button type="text" @click.stop="showConfigurator">Theme</el-button>
-    <div v-if="visible" class="configurator" ref="configurator">
-      <div v-if="currentConfig">
-        <main-panel
-          :currentConfig = "currentConfig"
-          :defaultConfig = "defaultConfig"
-          :userConfig = "userConfig"
-          :globalValue = "globalValue"
-          @onChange = "userConfigChange"
-        ></main-panel>
+    <transition name="fade">
+      <div v-show="visible" class="configurator" ref="configurator">
+        <div v-if="currentConfig">
+          <main-panel
+            :currentConfig = "currentConfig"
+            :defaultConfig = "defaultConfig"
+            :userConfig = "userConfig"
+            :globalValue = "globalValue"
+            @onChange = "userConfigChange"
+          ></main-panel>
+        </div>
+        <div v-if="init && !currentConfig">
+          <span>当前页面没有可配置的项目</span>
+        </div>
       </div>
-      <div v-if="init && !currentConfig">
-        <span>当前页面没有可配置的项目</span>
-      </div>
-    </div>
+    </transition>
   </div>
 </template>
 
 <style>
 .configurator {
   height: 100%;
-  width: 300px;
+  width: 20%;
   position: fixed;
   overflow-y: auto;
   top: 80px;
@@ -31,7 +33,21 @@
   background: #fff;
   color: #666;
   line-height: 24px;
+  padding-right: 1%;
 }
+.fade-enter,.fade-leave-to {
+    transform:translateX(100%);
+}
+.fade-enter-active ,.fade-leave-active {
+    transition:all 0.3s ease;
+}
+
+@media (min-width: 1600px) {
+  .configurator {
+    padding-right: calc((100% - 1600px) / 2);
+  }
+}
+
 </style>
 
 <script>
@@ -68,6 +84,7 @@ export default {
   methods: {
     showConfigurator() {
       this.visible = !this.visible;
+      bus.$emit('user-theme-config-visible', this.visible);
       if (this.init) return;
       this.$nextTick(() => {
         const loading = this.$loading({
