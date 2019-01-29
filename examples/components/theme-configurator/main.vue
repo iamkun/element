@@ -26,12 +26,14 @@
 import ColorEditor from './editor/color';
 import fontWeightEditor from './editor/fontWeight';
 import fontSizeEditor from './editor/fontSize';
+import fontLineHeightEditor from './editor/fontLineHeight';
 import { filterConfigType } from './utils/utils.js';
 
 export default {
   components: {
     ColorEditor,
     fontSizeEditor,
+    fontLineHeightEditor,
     fontWeightEditor
   },
   props: {
@@ -65,6 +67,8 @@ export default {
           return fontWeightEditor;
         case 'fontSize':
           return fontSizeEditor;
+        case 'fontLineHeight':
+          return fontLineHeightEditor;
         default:
           return;
       }
