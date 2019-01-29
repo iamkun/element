@@ -2,22 +2,15 @@
   <div class="main">
     <span>{{configName}}</span>
     <div v-for="(config, key) in currentConfig.config" :key="key">
-      <color-editor
-        v-if="config.type === 'color'"
+      <component 
+        :is="editorComponent(config.type)"
         :componentName=configName
         :config=config
-        :userConfig=userConfigByType
-        :golbalColor=globalValue.color
-        @onChange=onChange
-      ></color-editor>
-      <font-weight-editor
-        v-if="config.type === 'fontWeight'"
-        :componentName=configName
         :userConfig=userConfigByType
         :golbalValue=globalValue
-        :config=config
         @onChange=onChange
-      ></font-weight-editor>
+      >
+      </component>
     </div>
   </div>
 </template>
@@ -62,6 +55,16 @@ export default {
     }
   },
   methods: {
+    editorComponent(type) {
+      switch (type) {
+        case 'color':
+          return ColorEditor;
+        case 'fontWeight':
+          return fontWeightEditor;
+        default:
+          return;
+      }
+    },
     onChange(e) {
       this.$emit('onChange', e);
     }

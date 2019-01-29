@@ -84,7 +84,7 @@ import { getStyleDisplayValue, getStyleDisplayName, invertColor } from '../utils
 
 export default {
   props: {
-    golbalColor: {
+    golbalValue: {
       type: Object
     },
     componentName: {
@@ -108,6 +108,9 @@ export default {
     }
   },
   computed: {
+    golbalColor() {
+      return this.golbalValue.color;
+    },
     displayValue() {
       return getStyleDisplayValue(this.mergedValue, this.golbalColor);
     },
