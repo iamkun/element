@@ -11,6 +11,7 @@
             :globalValue = "globalValue"
             @onChange = "userConfigChange"
           ></main-panel>
+          <download-area></download-area>
         </div>
         <div v-if="init && !currentConfig">
           <span>当前页面没有可配置的项目</span>
@@ -57,10 +58,12 @@ import mainPanel from './main';
 import { filterConfigType, filterGlobalValue, updateDomHeadStyle } from './utils/utils.js';
 import DocStyle from './docStyle';
 import Loading from './loading';
+import DownloadArea from './download';
 
 export default {
   components: {
-    mainPanel
+    mainPanel,
+    DownloadArea
   },
   data() {
     return {
@@ -119,6 +122,9 @@ export default {
       updateDomHeadStyle('chalk-style', res);
       this.updateDocs();
       this.lastApply = time;
+    },
+    onDownload() {
+      return updateVars(Object.assign({}, this.userConfig, {download: true}));
     },
     onAction() {
       this.triggerComponentLoading(true);
