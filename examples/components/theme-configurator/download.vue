@@ -27,7 +27,7 @@
 export default {
   methods: {
     onReset() {
-      return;
+      window.location.reload(false);
     },
     onDownload() {
       this.$parent.onDownload()
