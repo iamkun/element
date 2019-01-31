@@ -27,7 +27,10 @@
 export default {
   methods: {
     onReset() {
-      window.location.reload(false);
+      this.$parent.visible = false;
+      setTimeout(() => {
+        window.location.reload(false);
+      }, 260);
     },
     onDownload() {
       this.$parent.onDownload()
