@@ -94,18 +94,20 @@ export default {
         const loading = this.$loading({
           target: this.$refs.configurator
         });
-        getVars()
-          .then((res) => {
-            this.defaultConfig = res;
-            this.filterCurrentConfig();
-          })
-          .catch((err) => {
-            console.log('err: ', err);
-          })
-          .then(() => {
-            this.init = true;
-            loading.close();
-          });
+        setTimeout(() => {
+          getVars()
+            .then((res) => {
+              this.defaultConfig = res;
+              this.filterCurrentConfig();
+            })
+            .catch((err) => {
+              console.log('err: ', err);
+            })
+            .then(() => {
+              this.init = true;
+              loading.close();
+            });
+        }, 300); // action after transition
       });
     },
     filterCurrentConfig() {
