@@ -2,7 +2,13 @@
   <div class="action-area">
     <div class="action-button">
       <el-button type="warning" @click.stop="onReset">重置</el-button>
-      <el-button class="action-button-right" type="primary" @click.stop="onDownload">下载</el-button>
+      <el-button 
+        class="action-button-right" 
+        type="primary" 
+        :loading=downloading
+        @click.stop="onDownload">
+        下载
+      </el-button>
     </div>
   </div>
 </template>
@@ -25,6 +31,11 @@
 </style>
 <script>
 export default {
+  data() {
+    return {
+      downloading: false
+    };
+  },
   methods: {
     onReset() {
       this.$parent.visible = false;
@@ -33,10 +44,14 @@ export default {
       }, 260);
     },
     onDownload() {
+      this.downloading = true;
       this.$parent.onDownload()
         .then()
         .catch((e) => {
           console.log('e: ', e);
+        })
+        .then(() => {
+          this.downloading = false;
         });
     }
   }
