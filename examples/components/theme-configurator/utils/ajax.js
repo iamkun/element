@@ -9,7 +9,7 @@ const xhr = (method, url, data = null) => {
         if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
           let response = xhr.response;
           const type = xhr.getResponseHeader('Content-Type');
-          if (type.indexOf('css') > -1) {
+          if (type.indexOf('css') > -1 && !/docs\..+\.css/.test(url)) {
             var blob = new Blob([response], { type });
             var csvUrl = URL.createObjectURL(blob);
             var link = document.createElement('a');
