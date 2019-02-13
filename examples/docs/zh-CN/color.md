@@ -1,26 +1,22 @@
 <script>
   import bus from '../../bus';
   import { tintColor } from '../../color.js';
-  const domColorMap = {
-    '$--color-text-primary': '.bg-text-primary',
-    '$--color-text-regular': '.bg-text-regular',
-    '$--color-text-secondary': '.bg-text-secondary',
-    '$--color-text-placeholder': '.bg-text-placeholder',
-    '$--border-color-base': '.bg-border-base',
-    '$--border-color-light': '.bg-border-light',
-    '$--border-color-lighter': '.bg-border-lighter',
-    '$--border-color-extra-light': '.bg-border-extra-light'
-  };
   const ColorMap = {
     '$--color-primary': 'primary',
     '$--color-success': 'success',
     '$--color-warning': 'warning',
     '$--color-danger': 'danger',
     '$--color-info': 'info',
-  };
-  const domColorUpdate = (domClass, color) => {
-    document.querySelectorAll(`.demo-color-box${domClass}`)[0].style.backgroundColor = color;
-    document.querySelectorAll(`.demo-color-box${domClass} .value`)[0].innerText = color;
+    '$--color-white': 'white',
+    '$--color-black': 'black',
+    '$--color-text-primary': 'textPrimary',
+    '$--color-text-regular': 'textRegular',
+    '$--color-text-secondary': 'textSecondary',
+    '$--color-text-placeholder': 'textPlaceholder',
+    '$--border-color-base': 'borderBase',
+    '$--border-color-light': 'borderLight',
+    '$--border-color-lighter': 'borderLighter',
+    '$--border-color-extra-light': 'borderExtraLight'
   };
   export default {
     created() {
@@ -46,16 +42,23 @@
         success: '#67C23A',
         warning: '#E6A23C',
         danger: '#F56C6C',
-        info: '#909399'
+        info: '#909399',
+        white: '#FFFFFF',
+        black: '#000000',
+        textPrimary: '#303133',
+        textRegular: '#606266',
+        textSecondary: '#909399',
+        textPlaceholder: '#C0C4CC',
+        borderBase: '#DCDFE6',
+        borderLight: '#E4E7ED',
+        borderLighter: '#EBEEF5',
+        borderExtraLight: '#F2F6FC'
       }
     },
     watch: {
       global: {
         handler(value) {
           Object.keys(value).forEach((color) => {
-            if (domColorMap[color]) {
-              domColorUpdate(domColorMap[color], value[color])
-            }
             if (ColorMap[color]) {
               this[ColorMap[color]] = value[color]
             }
@@ -87,6 +90,7 @@
     height: 74px;
     margin: 10px 0!important;
     border-radius: 4px 4px 4px 4px!important;
+    padding: 15px 20px;
   }
   .demo-color-box-group {
     .demo-color-box {
@@ -99,35 +103,6 @@
     .demo-color-box:last-child {
       border-radius: 0 0 4px 4px;
     }
-  }
-  .bg-text-primary {
-    background-color: #303133;
-  }
-  .bg-text-regular {
-    background-color: #606266;
-  }
-  .bg-text-secondary {
-    background-color: #909399;
-  }
-  .bg-text-placeholder {
-    background-color: #c0c4cc;
-  }
-
-  .bg-border-base {
-    background-color: #dcdfe6;
-  }
-  .bg-border-light {
-    background-color: #e4e7ed;
-  }
-  .bg-border-lighter {
-    background-color: #ebeef5;
-  }
-  .bg-border-extra-light {
-    background-color: #f2f6fc;
-  }
-
-  [class*=" bg-border-"] {
-    color: #303133;
   }
   .bg-color-sub {
     width: 100%;
@@ -158,11 +133,14 @@
   }
   .bg-transparent {
     border: 1px solid #FCC3C3;
-    color: #666;
+    color: #303133;
     background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M0 98 L100 0 L100 1 L1 98' fill='#FCC3C3' /></svg>");
     background-repeat:no-repeat;
     background-position:center center;
     background-size: 100% 100%, auto;
+  }
+  .demo-color-box-lite {
+    color: #303133;
   }
 </style>
 
@@ -278,30 +256,47 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
 <el-row :gutter="12">
   <el-col :span="6" :xs="{span: 12}">
     <div class="demo-color-box-group">
-      <div class="demo-color-box demo-color-box-other bg-text-primary">主要文字<div class="value">#303133</div></div>
-      <div class="demo-color-box demo-color-box-other bg-text-regular">常规文字<div class="value">#606266</div></div>
-      <div class="demo-color-box demo-color-box-other bg-text-secondary">次要文字<div class="value">#909399</div></div>
-      <div class="demo-color-box demo-color-box-other bg-text-placeholder">占位文字<div class="value">#C0C4CC</div></div>
+      <div class="demo-color-box demo-color-box-other"
+      :style="{ background: textPrimary }"
+      >主要文字<div class="value">{{textPrimary}}</div></div>
+      <div class="demo-color-box demo-color-box-other"
+      :style="{ background: textRegular }"
+      >
+      常规文字<div class="value">{{textRegular}}</div></div>
+      <div class="demo-color-box demo-color-box-other"
+      :style="{ background: textSecondary }"
+      >次要文字<div class="value">{{textSecondary}}</div></div>
+      <div class="demo-color-box demo-color-box-other"
+      :style="{ background: textPlaceholder }"
+      >占位文字<div class="value">{{textPlaceholder}}</div></div>
     </div>
   </el-col>
   <el-col :span="6" :xs="{span: 12}">
     <div class="demo-color-box-group">
-      <div class="demo-color-box demo-color-box-other bg-border-base">一级边框<div class="value">#DCDFE6</div></div>
-      <div class="demo-color-box demo-color-box-other bg-border-light">二级边框<div class="value">#E4E7ED</div></div>
-      <div class="demo-color-box demo-color-box-other bg-border-lighter">三级边框<div class="value">#EBEEF5</div></div>
-      <div class="demo-color-box demo-color-box-other bg-border-extra-light">四级边框<div class="value">#F2F6FC</div></div>
+      <div class="demo-color-box demo-color-box-other demo-color-box-lite"
+      :style="{ background: borderBase }"
+      >一级边框<div class="value">{{borderBase}}</div></div>
+      <div class="demo-color-box demo-color-box-other demo-color-box-lite"
+      :style="{ background: borderLight }"
+      >二级边框<div class="value">{{borderLight}}</div></div>
+      <div class="demo-color-box demo-color-box-other demo-color-box-lite"
+      :style="{ background: borderLighter }"
+      >三级边框<div class="value">{{borderLighter}}</div></div>
+      <div class="demo-color-box demo-color-box-other demo-color-box-lite"
+      :style="{ background: borderExtraLight }"
+      >四级边框<div class="value">{{borderExtraLight}}</div></div>
     </div>
   </el-col>
   <el-col :span="6" :xs="{span: 12}">
     <div class="demo-color-box-group">
       <div 
       class="demo-color-box demo-color-box-other"
-      :style="{ background: '#000000' }"
-      >基础黑色<div class="value">#000000</div></div>
+      :style="{ background: black }"
+      >基础黑色<div class="value">{{black}}</div></div>
       <div
       class="demo-color-box demo-color-box-other"
-      :style="{ background: '#FFFFFF', color: '#000', border: '1px solid #000' }"
-      >基础白色<div class="value">#FFFFFF</div></div>
+      :style="{ background: white, color: '#303133', border: '1px solid #eee' }"
+      >基础白色<div class="value">{{white}}</div></div>
       <div class="demo-color-box demo-color-box-other bg-transparent">透明<div class="value">Transparent</div>
     </div>
   </el-col>
