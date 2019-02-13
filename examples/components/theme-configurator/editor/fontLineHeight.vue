@@ -28,6 +28,10 @@
 
 <script>
 const defaultFontLineHeight = [
+  '1',
+  '1.3',
+  '1.5',
+  '1.7',
   '12px',
   '16px',
   '20px',

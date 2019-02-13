@@ -70,6 +70,28 @@
   .typo-Arial {
     font-family: 'Arial';
   }
+
+  .lineH-left {
+    display: inline-block;
+    width: 50%;
+  }
+  .lineH-right {
+    width: 30%;
+    display: inline-block;
+    list-style: none;
+    padding: 0 0 0 90px;
+    margin: 0;
+    vertical-align: top;
+  }
+  .lineH-right li{
+    font-size: 14px;
+    color: #666;
+    padding-bottom: 10px;
+  }
+  .lineH-right li span{
+    float: right;
+    padding-right: 40px;
+  }
 </style>
 
 ## Typography 字体
@@ -105,12 +127,6 @@
   RGag
   <div class="name">Arial</div>
 </div>
-
-### Font-family 代码
-
-```css
-font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-```
 
 ### 字体使用规范
 
@@ -148,3 +164,21 @@ font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Micros
     </tr>
   </tbody>
 </table>
+
+### 行高
+
+<div>
+<img class="lineH-left" src="~examples/assets/images/typography.png" />
+<ul class="lineH-right">
+<li>line-height:1 <span>无行高</span></li>
+<li>line-height:1.3 <span>紧凑</span></li>
+<li>line-height:1.5 <span>常规</span></li>
+<li>line-height:1.7 <span>宽松</span></li>
+</ul>
+</div>
+
+### Font-family 代码
+
+```css
+font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+```
