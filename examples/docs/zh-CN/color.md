@@ -2,11 +2,6 @@
   import bus from '../../bus';
   import { tintColor } from '../../color.js';
   const domColorMap = {
-    '$--color-primary': '.bg-blue',
-    '$--color-success': '.bg-success',
-    '$--color-warning': '.bg-warning',
-    '$--color-danger': '.bg-danger',
-    '$--color-info': '.bg-info',
     '$--color-text-primary': '.bg-text-primary',
     '$--color-text-regular': '.bg-text-regular',
     '$--color-text-secondary': '.bg-text-secondary',
@@ -15,6 +10,13 @@
     '$--border-color-light': '.bg-border-light',
     '$--border-color-lighter': '.bg-border-lighter',
     '$--border-color-extra-light': '.bg-border-extra-light'
+  };
+  const ColorMap = {
+    '$--color-primary': 'primary',
+    '$--color-success': 'success',
+    '$--color-warning': 'warning',
+    '$--color-danger': 'danger',
+    '$--color-info': 'info',
   };
   const domColorUpdate = (domClass, color) => {
     document.querySelectorAll(`.demo-color-box${domClass}`)[0].style.backgroundColor = color;
@@ -40,6 +42,11 @@
     data() {
       return {
         global: {},
+        primary: '#409EFF',
+        success: '#67C23A',
+        warning: '#E6A23C',
+        danger: '#F56C6C',
+        info: '#909399'
       }
     },
     watch: {
@@ -48,6 +55,9 @@
           Object.keys(value).forEach((color) => {
             if (domColorMap[color]) {
               domColorUpdate(domColorMap[color], value[color])
+            }
+            if (ColorMap[color]) {
+              this[ColorMap[color]] = value[color]
             }
           });
         }
@@ -90,23 +100,6 @@
       border-radius: 0 0 4px 4px;
     }
   }
-  .bg-blue {
-    background-color: #409EFF;
-  }
-
-  .bg-success {
-    background-color: #67C23A;
-  }
-  .bg-warning {
-    background-color: #E6A23C;
-  }
-  .bg-danger {
-    background-color: #F56C6C;
-  }
-  .bg-info {
-    background-color: #909399;
-  }
-
   .bg-text-primary {
     background-color: #303133;
   }
@@ -183,16 +176,20 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
 
 <el-row :gutter="12">
   <el-col :span="10" :xs="{span: 12}">
-    <div class="demo-color-box bg-blue">Brand Color<div class="value">#409EFF</div>
+    <div 
+      class="demo-color-box"
+      :style="{ background: primary }"
+    >
+      Brand Color<div class="value">#409EFF</div>
     <div 
       class="bg-color-sub"
-      :style="{ background: tintColor('#409EFF', 0.9) }"
+      :style="{ background: tintColor(primary, 0.9) }"
     >
     <div 
       class="bg-blue-sub-item" 
       v-for="(item, key) in Array(8)"
       :key="key"
-      :style="{ background: tintColor('#409EFF', (key + 1) / 10) }"
+      :style="{ background: tintColor(primary, (key + 1) / 10) }"
         >
     </div>
     </div>
@@ -205,7 +202,9 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
 
 <el-row :gutter="12">
   <el-col :span="6" :xs="{span: 12}">
-    <div class="demo-color-box bg-success">Success<div class="value">#67C23A</div>
+    <div class="demo-color-box"
+    :style="{ background: success }"
+    >Success<div class="value">#67C23A</div>
       <div 
         class="bg-color-sub"
       >
@@ -213,14 +212,16 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
           class="bg-success-sub-item" 
           v-for="(item, key) in Array(2)"
           :key="key"
-          :style="{ background: tintColor('#67C23A', (key + 8) / 10) }"
+          :style="{ background: tintColor(success, (key + 8) / 10) }"
             >
         </div>
       </div>
     </div>
   </el-col>
   <el-col :span="6" :xs="{span: 12}">
-    <div class="demo-color-box bg-warning">Warning<div class="value">#E6A23C</div>
+    <div class="demo-color-box"
+    :style="{ background: warning }"
+    >Warning<div class="value">#E6A23C</div>
       <div 
           class="bg-color-sub"
         >
@@ -228,14 +229,16 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
           class="bg-success-sub-item" 
           v-for="(item, key) in Array(2)"
           :key="key"
-          :style="{ background: tintColor('#E6A23C', (key + 8) / 10) }"
+          :style="{ background: tintColor(warning, (key + 8) / 10) }"
             >
         </div>
       </div>
     </div>
   </el-col>
   <el-col :span="6" :xs="{span: 12}">
-    <div class="demo-color-box bg-danger">Danger<div class="value">#F56C6C</div>
+    <div class="demo-color-box"
+    :style="{ background: danger }"
+    >Danger<div class="value">#F56C6C</div>
       <div 
           class="bg-color-sub"
         >
@@ -243,14 +246,16 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
           class="bg-success-sub-item" 
           v-for="(item, key) in Array(2)"
           :key="key"
-          :style="{ background: tintColor('#F56C6C', (key + 8) / 10) }"
+          :style="{ background: tintColor(danger, (key + 8) / 10) }"
             >
         </div>
       </div>
     </div>
   </el-col>
   <el-col :span="6" :xs="{span: 12}">
-    <div class="demo-color-box bg-info">Info<div class="value">#909399</div>
+    <div class="demo-color-box"
+    :style="{ background: info }"
+    >Info<div class="value">#909399</div>
       <div 
           class="bg-color-sub"
         >
@@ -258,7 +263,7 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
           class="bg-success-sub-item" 
           v-for="(item, key) in Array(2)"
           :key="key"
-          :style="{ background: tintColor('#909399', (key + 8) / 10) }"
+          :style="{ background: tintColor(info, (key + 8) / 10) }"
             >
         </div>
       </div>
