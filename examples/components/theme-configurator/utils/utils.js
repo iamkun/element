@@ -4,6 +4,7 @@ export const filterConfigType = (name) => {
   switch (name) {
     case 'color':
     case 'typography':
+    case 'border':
       return 'global';
     default:
       return 'local';
