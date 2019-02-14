@@ -27,6 +27,7 @@ import ColorEditor from './editor/color';
 import fontWeightEditor from './editor/fontWeight';
 import fontSizeEditor from './editor/fontSize';
 import fontLineHeightEditor from './editor/fontLineHeight';
+import simpleTextEditor from './editor/simpleText';
 import { filterConfigType } from './utils/utils.js';
 
 export default {
@@ -34,6 +35,7 @@ export default {
     ColorEditor,
     fontSizeEditor,
     fontLineHeightEditor,
+    simpleTextEditor,
     fontWeightEditor
   },
   props: {
@@ -70,7 +72,7 @@ export default {
         case 'fontLineHeight':
           return fontLineHeightEditor;
         default:
-          return;
+          return simpleTextEditor;
       }
     },
     onChange(e) {

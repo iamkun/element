@@ -1,5 +1,8 @@
 <script>
   import bus from '../../bus';
+  const Map = {
+    '$--box-shadow-light': 'boxShadowLight'
+  };
   export default {
     created() {
       bus.$on('user-theme-config-update', this.setGlobal);
@@ -17,6 +20,18 @@
     data() {
       return {
         global: {},
+        boxShadowLight: '0 2px 12px 0 rgba(0, 0, 0, 0.1)'
+      }
+    },
+    watch: {
+      global: {
+        handler(value) {
+          Object.keys(value).forEach((c) => {
+            if (Map[c]) {
+              this[Map[c]] = value[c]
+            }
+          });
+        }
       }
     }
   }
@@ -43,7 +58,7 @@
 .demo-shadow {
   height: 100px;
   width: 50%;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,.06)
+  border: 1px solid #eee;
 }
 .demo-shadow-text {
   line-height: 50px;
@@ -148,5 +163,8 @@
 
 我们提供了一下几种投影样式，以供选择。
 
-<div class="demo-shadow"></div>
-<span class="demo-shadow-text">box-shadow: 0 2px 12px 0 rgba(0,0,0,.06)</span>
+<div 
+class="demo-shadow"
+:style="{ boxShadow: boxShadowLight }"
+></div>
+<span class="demo-shadow-text">box-shadow: {{boxShadowLight}}</span>
