@@ -1,7 +1,8 @@
 <script>
   import bus from '../../bus';
   const Map = {
-    '$--box-shadow-light': 'boxShadowLight'
+    '$--box-shadow-light': 'boxShadowLight',
+    '$--box-shadow-base': 'boxShadowBase'
   };
   export default {
     created() {
@@ -20,7 +21,8 @@
     data() {
       return {
         global: {},
-        boxShadowLight: '0 2px 12px 0 rgba(0, 0, 0, 0.1)'
+        boxShadowLight: '0 2px 12px 0 rgba(0, 0, 0, 0.1)',
+        boxShadowBase: '0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)'
       }
     },
     watch: {
@@ -165,6 +167,12 @@
 
 <div 
 class="demo-shadow"
+:style="{ boxShadow: boxShadowBase }"
+></div>
+<span class="demo-shadow-text">基础投影 box-shadow: {{boxShadowBase}}</span>
+
+<div 
+class="demo-shadow"
 :style="{ boxShadow: boxShadowLight }"
 ></div>
-<span class="demo-shadow-text">box-shadow: {{boxShadowLight}}</span>
+<span class="demo-shadow-text">浅色投影 box-shadow: {{boxShadowLight}}</span>
