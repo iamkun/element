@@ -1,7 +1,13 @@
 <template>
   <div class="main">
-    <span>{{configName}}</span>
-    <div v-for="(config, key) in currentConfig.config" :key="key">
+    <!-- <span>{{configName}}</span> -->
+    <div v-for="(config, key) in configByOrder" :key="key">
+      <span 
+        v-if="showCategory(config.category, key)"
+        class="category-name"
+      >
+        {{config.category}}
+      </span>
       <component 
         :is="editorComponent(config.type)"
         :componentName=configName
@@ -19,6 +25,11 @@
 .main {
   margin-bottom: 140px;
   padding: 10px;
+}
+.category-name {
+  font-size: 18px;
+  display: block;
+  margin: 30px 0;
 }
 </style>
 
@@ -58,6 +69,9 @@ export default {
     },
     userConfigByType() {
       return this.userConfig[filterConfigType(this.configName)];
+    },
+    configByOrder() {
+      return this.currentConfig.config.sort((a, b) => (a.order - b.order));
     }
   },
   methods: {
@@ -77,7 +91,22 @@ export default {
     },
     onChange(e) {
       this.$emit('onChange', e);
+    },
+    showCategory(name, key) {
+      if (!name) {
+        return false;
+      }
+      if (!this.categoryDisplay[name] || this.categoryDisplay[name] === key) {
+        this.categoryDisplay[name] = key;
+        return true;
+      }
+      return false;
     }
+  },
+  data() {
+    return {
+      categoryDisplay: {}
+    };
   }
 };
 </script>
