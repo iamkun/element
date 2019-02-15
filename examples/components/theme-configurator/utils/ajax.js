@@ -19,13 +19,12 @@ const xhr = (method, url, data = null) => {
                 filename = matches[1].replace(/['"]/g, '');
               }
             }
-            var blob = new Blob([response], { type });
-            var csvUrl = URL.createObjectURL(blob);
+            var blob = new Blob([response]);
+            var zipUrl = URL.createObjectURL(blob);
             var link = document.createElement('a');
-            link.href = csvUrl;
+            link.href = zipUrl;
             link.download = filename;
             link.click();
-            resolve(response);
             return;
           }
           try {
