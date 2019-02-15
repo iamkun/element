@@ -26,6 +26,7 @@ const xhr = (method, url, data = null, cb) => {
             link.href = zipUrl;
             link.download = filename;
             link.click();
+            resolve(response);
             return;
           }
           try {
