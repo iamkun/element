@@ -10,11 +10,20 @@ const xhr = (method, url, data = null) => {
           let response = xhr.response;
           const type = xhr.getResponseHeader('Content-Type');
           if (type.indexOf('css') > -1 && !/docs\..+\.css/.test(url)) {
+            let filename = 'style.zip';
+            const disposition = xhr.getResponseHeader('content-disposition');
+            if (disposition && disposition.indexOf('attachment') !== -1) {
+              var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+              var matches = filenameRegex.exec(disposition);
+              if (matches != null && matches[1]) {
+                filename = matches[1].replace(/['"]/g, '');
+              }
+            }
             var blob = new Blob([response], { type });
             var csvUrl = URL.createObjectURL(blob);
             var link = document.createElement('a');
             link.href = csvUrl;
-            link.download = 'style.css';
+            link.download = filename;
             link.click();
             resolve(response);
             return;
