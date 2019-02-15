@@ -9,7 +9,7 @@ const xhr = (method, url, data = null) => {
         if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
           let response = xhr.response;
           const type = xhr.getResponseHeader('Content-Type');
-          if (type.indexOf('css') > -1 && !/docs\..+\.css/.test(url)) {
+          if (type.indexOf('zip') > -1) {
             let filename = 'style.zip';
             const disposition = xhr.getResponseHeader('content-disposition');
             if (disposition && disposition.indexOf('attachment') !== -1) {
