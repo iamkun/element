@@ -79,7 +79,7 @@
     width: 30%;
     display: inline-block;
     list-style: none;
-    padding: 0 0 0 90px;
+    padding: 3px 0 0 90px;
     margin: 0;
     vertical-align: top;
   }
