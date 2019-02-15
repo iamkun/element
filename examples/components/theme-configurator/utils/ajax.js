@@ -1,9 +1,10 @@
-const xhr = (method, url, data = null) => {
+const xhr = (method, url, data = null, cb) => {
   return new window.Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     xhr.open(method, url);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.timeout = 10000;
+    if (cb) cb(xhr);
     xhr.onload = () => {
       if (xhr.readyState === 4) {
         if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
@@ -19,7 +20,7 @@ const xhr = (method, url, data = null) => {
                 filename = matches[1].replace(/['"]/g, '');
               }
             }
-            var blob = new Blob([response]);
+            var blob = new Blob([response], { type });
             var zipUrl = URL.createObjectURL(blob);
             var link = document.createElement('a');
             link.href = zipUrl;
@@ -49,8 +50,8 @@ const xhr = (method, url, data = null) => {
   });
 };
 
-export const post = (url, data) => {
-  return xhr('POST', url, data);
+export const post = (url, data, cb) => {
+  return xhr('POST', url, data, cb);
 };
 
 export const get = (url) => {

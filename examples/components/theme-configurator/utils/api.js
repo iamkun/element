@@ -6,6 +6,6 @@ export const getVars = () => {
   return get(host);
 };
 
-export const updateVars = (data) => {
-  return post(host, data);
+export const updateVars = (data, cb) => {
+  return post(host, data, cb);
 };

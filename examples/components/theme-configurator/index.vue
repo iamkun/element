@@ -130,7 +130,9 @@ export default {
       this.lastApply = time;
     },
     onDownload() {
-      return updateVars(Object.assign({}, this.userConfig, {download: true}));
+      return updateVars(Object.assign({}, this.userConfig, {download: true}), (xhr) => {
+        xhr.responseType = 'blob';
+      });
     },
     onAction() {
       this.triggerComponentLoading(true);
