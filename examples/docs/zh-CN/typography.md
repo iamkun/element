@@ -128,7 +128,7 @@
   <div class="name">Arial</div>
 </div>
 
-### 字体使用规范
+### 字号
 
 <table class="demo-typo-size">
   <tbody>
@@ -150,17 +150,17 @@
     <tr>
       <td class="text-regular">正文</td>
       <td class="text-regular">用 Element 快速搭建页面</td>
-      <td class="color-dark-light">14px Small</td>
+      <td class="color-dark-light">14px Base</td>
     </tr>
     <tr>
       <td class="text-small">正文（小）</td>
       <td class="text-small">用 Element 快速搭建页面</td>
-      <td class="color-dark-light">13px Extra Small</td>
+      <td class="color-dark-light">13px Small</td>
     </tr>
     <tr>
       <td class="text-smaller">辅助文字</td>
       <td class="text-smaller">用 Element 快速搭建页面</td>
-      <td class="color-dark-light">12px Extra Extra Small</td>
+      <td class="color-dark-light">12px Extra Small</td>
     </tr>
   </tbody>
 </table>
