@@ -134,7 +134,7 @@
   .bg-transparent {
     border: 1px solid #FCC3C3;
     color: #303133;
-    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M0 98 L100 0 L100 1 L1 98' fill='#FCC3C3' /></svg>");
+    background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' preserveAspectRatio='none' viewBox='0 0 100 100'><path d='M0 98 L100 0 L100 1 L1 98' fill='%23FCC3C3' /></svg>");
     background-repeat:no-repeat;
     background-position:center center;
     background-size: 100% 100%, auto;
