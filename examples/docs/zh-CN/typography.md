@@ -2,6 +2,11 @@
   import bus from '../../bus';
   const varMap = [
     '$--font-size-extra-large',
+    '$--font-size-large',
+    '$--font-size-medium',
+    '$--font-size-base',
+    '$--font-size-small',
+    '$--font-size-extra-small'
   ];
   export default {
     created() {
@@ -24,6 +29,11 @@
       return {
         global: {},
         'font_size_extra_large': '20px',
+        'font_size_large': '18px',
+        'font_size_medium': '16px',
+        'font_size_base': '14px',
+        'font_size_small': '13px',
+        'font_size_extra_small': '12px'
       }
     },
     watch: {
@@ -70,21 +80,6 @@
     }
   }
   .demo-typo-size {
-    .h2 {
-      font-size: 18px;
-    }
-    .h3 {
-      font-size: 16px;
-    }
-    .text-regular {
-      font-size: 14px;
-    }
-    .text-small {
-      font-size: 13px;
-    }
-    .text-smaller {
-      font-size: 12px;
-    }
     .color-dark-light {
       color: #99a9bf;
     }
@@ -177,30 +172,40 @@
       <td>用 Element 快速搭建页面</td>
       <td class="color-dark-light">{{font_size_extra_large}} Extra large</td>
     </tr>
-    <tr>
-      <td class="h2">标题</td>
-      <td class="h2">用 Element 快速搭建页面</td>
-      <td class="color-dark-light">18px large</td>
+    <tr
+    :style="{ fontSize: font_size_large }"
+    >
+      <td>标题</td>
+      <td>用 Element 快速搭建页面</td>
+      <td class="color-dark-light">{{font_size_large}} large</td>
     </tr>
-    <tr>
+    <tr
+    :style="{ fontSize: font_size_medium }"
+    >
       <td class="h3">小标题</td>
       <td class="h3">用 Element 快速搭建页面</td>
-      <td class="color-dark-light">16px Medium</td>
+      <td class="color-dark-light">{{font_size_medium}} Medium</td>
     </tr>
-    <tr>
+    <tr
+    :style="{ fontSize: font_size_base }"
+    >
       <td class="text-regular">正文</td>
       <td class="text-regular">用 Element 快速搭建页面</td>
-      <td class="color-dark-light">14px Base</td>
+      <td class="color-dark-light">{{font_size_base}} Base</td>
     </tr>
-    <tr>
+    <tr
+    :style="{ fontSize: font_size_small }"
+    >
       <td class="text-small">正文（小）</td>
       <td class="text-small">用 Element 快速搭建页面</td>
-      <td class="color-dark-light">13px Small</td>
+      <td class="color-dark-light">{{font_size_small}} Small</td>
     </tr>
-    <tr>
+    <tr
+    :style="{ fontSize: font_size_extra_small }"
+    >
       <td class="text-smaller">辅助文字</td>
       <td class="text-smaller">用 Element 快速搭建页面</td>
-      <td class="color-dark-light">12px Extra Small</td>
+      <td class="color-dark-light">{{font_size_extra_small}} Extra Small</td>
     </tr>
   </tbody>
 </table>
