@@ -1,3 +1,44 @@
+<script>
+  import bus from '../../bus';
+  const varMap = [
+    '$--font-size-extra-large',
+  ];
+  export default {
+    created() {
+      bus.$on('user-theme-config-update', this.setGlobal);
+    },
+    mounted() {
+      this.setGlobal();
+    },
+    methods: {
+      tintColor(color, tint) {
+        return tintColor(color, tint);
+      },
+      setGlobal() {
+        if (window.userThemeConfig) {
+          this.global = window.userThemeConfig.global;
+        }
+      }
+    },
+    data() {
+      return {
+        global: {},
+        'font_size_extra_large': '20px',
+      }
+    },
+    watch: {
+      global: {
+        handler(value) {
+          Object.keys(value).forEach((v) => {
+            if (varMap.indexOf(v) > -1) {
+              this[v.replace('$--', '').replace(/-/g, '_')] = value[v]
+            }
+          });
+        }
+      }
+    },
+  }
+</script>
 <style>
   .demo-typo-box {
     height: 200px;
@@ -29,9 +70,6 @@
     }
   }
   .demo-typo-size {
-    .h1 {
-      font-size: 20px;
-    }
     .h2 {
       font-size: 18px;
     }
@@ -132,10 +170,12 @@
 
 <table class="demo-typo-size">
   <tbody>
-    <tr>
-      <td class="h1">主标题</td>
-      <td class="h1">用 Element 快速搭建页面</td>
-      <td class="color-dark-light">20px  Extra large</td>
+    <tr
+    :style="{ fontSize: font_size_extra_large }"
+    >
+      <td>主标题</td>
+      <td>用 Element 快速搭建页面</td>
+      <td class="color-dark-light">{{font_size_extra_large}} Extra large</td>
     </tr>
     <tr>
       <td class="h2">标题</td>
