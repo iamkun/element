@@ -5,8 +5,9 @@
     </div>
     <div class="config-content">
       <el-input 
+        @keyup.enter.native="onUpdate"
         v-model="value"
-        @blur="onBlur"
+        @blur="onUpdate"
       ></el-input>
     </div>
   </section>
@@ -27,7 +28,8 @@ export default {
   },
   data() {
     return {
-      value: ''
+      value: '',
+      oldValue: ''
     };
   },
   mixins: [Mixin],
@@ -37,8 +39,12 @@ export default {
     }
   },
   methods: {
-    onBlur(e) {
-      this.onChange(e.target.value);
+    onUpdate(e) {
+      const { value } = e.target;
+      if (value !== this.oldValue) {
+        this.oldValue = value;
+        this.onChange(value);
+      }
     }
   },
   watch: {
