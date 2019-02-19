@@ -11,11 +11,11 @@
             :globalValue = "globalValue"
             @onChange = "userConfigChange"
           ></main-panel>
-          <download-area></download-area>
         </div>
         <div v-if="init && !currentConfig">
           <span>当前页面没有可配置的项目</span>
         </div>
+        <download-area></download-area>
       </div>
     </transition>
   </div>

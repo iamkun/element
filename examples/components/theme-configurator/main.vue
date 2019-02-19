@@ -3,7 +3,7 @@
     <!-- <span>{{configName}}</span> -->
     <div v-for="(config, key) in configByOrder" :key="key">
       <span 
-        v-if="showCategory(config.category, key)"
+        v-if="showCategory(config.category, key + 1)"
         class="category-name"
       >
         {{config.category}}
