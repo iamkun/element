@@ -54,9 +54,6 @@
 .demo-border .line .dashed{ 
   border: 2px dashed #EEE;
 }
-.demo-border .line .dotted{ 
-  border: 3px dotted #EEE;
-}
 .demo-shadow {
   height: 100px;
   width: 50%;
@@ -87,8 +84,8 @@
 .demo-radius .radius-4 {
   border-radius: 4px;
 }
-.demo-radius .radius-8 {
-  border-radius: 8px;
+.demo-radius .radius-2 {
+  border-radius: 2px;
 }
 .demo-radius .radius-30 {
   border-radius: 30px;
@@ -124,13 +121,6 @@
         <div class="dashed"></div>
       </td>
     </tr>
-    <tr>
-      <td class="text">点线</td>
-      <td class="text">3px</td>
-      <td class="line">
-        <div class="dotted"></div>
-      </td>
-    </tr>
   </tbody>
 </table>
 
@@ -146,13 +136,13 @@
   </el-col>
   <el-col :span="6" :xs="{span: 12}">
     <div class="title">小圆角</div>
-    <div class="value">border-radius: 4px</div>
-    <div class="radius radius-4"></div>
+    <div class="value">border-radius: 2px</div>
+    <div class="radius radius-2"></div>
   </el-col>
   <el-col :span="6" :xs="{span: 12}">
     <div class="title">大圆角</div>
-    <div class="value">border-radius: 8px</div>
-    <div class="radius radius-8"></div>
+    <div class="value">border-radius: 4px</div>
+    <div class="radius radius-4"></div>
   </el-col>
   <el-col :span="6" :xs="{span: 12}">
     <div class="title">圆形圆角</div>
