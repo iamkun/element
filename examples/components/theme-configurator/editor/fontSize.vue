@@ -31,12 +31,12 @@ const defaultFontSize = [
   '12px',
   '13px',
   '14px',
-  '15px',
   '16px',
-  '17px',
   '18px',
-  '19px',
-  '20px'
+  '20px',
+  '28px',
+  '36px',
+  '48px'
 ];
 import Mixin from './mixin';
 import { getStyleDisplayName } from '../utils/utils.js';
