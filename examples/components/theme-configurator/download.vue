@@ -1,13 +1,13 @@
 <template>
   <div class="action-area">
     <div class="action-button">
-      <el-button type="warning" @click.stop="onReset">重置</el-button>
+      <el-button type="warning" @click.stop="onReset">{{getActionDisplayName("reset-theme")}}</el-button>
       <el-button 
         class="action-button-right" 
         type="primary" 
         :loading=downloading
         @click.stop="onDownload">
-        下载
+        {{getActionDisplayName("download-theme")}}
       </el-button>
     </div>
   </div>
@@ -30,6 +30,7 @@
 }
 </style>
 <script>
+import { getActionDisplayName } from './utils/utils.js';
 export default {
   data() {
     return {
@@ -42,6 +43,9 @@ export default {
       setTimeout(() => {
         window.location.reload(false);
       }, 260);
+    },
+    getActionDisplayName(key) {
+      return getActionDisplayName(key);
     },
     onDownload() {
       this.downloading = true;

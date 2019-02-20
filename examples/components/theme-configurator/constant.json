@@ -8,6 +8,10 @@
       "-font-weight": "文字粗细",
       "-font-size": "文字大小",
       "-font-line-height": "文字行高"
+    },
+    "action": {
+      "reset-theme": "重置",
+      "download-theme": "下载"
     }
   },
   {
@@ -19,6 +23,10 @@
       "-font-weight": "font weight",
       "-font-size": "font size",
       "-font-line-height": "font line height"
+    },
+    "action": {
+      "reset-theme": "Reset",
+      "download-theme": "Download"
     }
   },
   {

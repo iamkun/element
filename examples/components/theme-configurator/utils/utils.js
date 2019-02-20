@@ -38,9 +38,13 @@ export const getStyleDisplayValue = (displayValue, global) => {
   return displayValue;
 };
 
-export const getStyleDisplayName = (config, componentName) => {
+const getNameFromI18N = (name) => {
   const lang = location.hash.replace('#', '').split('/')[1] || 'zh-CN';
-  const displayNameMap = constant.filter(config => config.lang === lang)[0]['display-name'];
+  return constant.filter(config => config.lang === lang)[0][name];
+};
+
+export const getStyleDisplayName = (config, componentName) => {
+  const displayNameMap = getNameFromI18N('display-name');
   if (config.name !== '[]') {
     return config.name.replace(/\[?\]?/, '').split(',')[0];
   }
@@ -49,6 +53,10 @@ export const getStyleDisplayName = (config, componentName) => {
     displayName = displayName.replace(name, displayNameMap[name]);
   });
   return displayName.replace(/-/g, '');
+};
+
+export const getActionDisplayName = (key) => {
+  return getNameFromI18N('action')[key];
 };
 
 export const invertColor = (color) => {
