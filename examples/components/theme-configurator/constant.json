@@ -12,6 +12,13 @@
     "action": {
       "reset-theme": "重置",
       "download-theme": "下载"
+    },
+    "category": {
+      "BrandColor": "品牌颜色",
+      "SecondaryColor": "辅助颜色",
+      "FontColor": "文字颜色",
+      "LineColor": "边框颜色",
+      "BackgroundColor": "背景颜色"
     }
   },
   {
@@ -27,6 +34,13 @@
     "action": {
       "reset-theme": "Reset",
       "download-theme": "Download"
+    },
+    "category": {
+      "BrandColor": "Brand Color",
+      "SecondaryColor": "Secondary Color",
+      "FontColor": "Font Color",
+      "LineColor": "Line Color",
+      "BackgroundColor": "Background Color"
     }
   },
   {

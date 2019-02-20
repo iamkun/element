@@ -75,6 +75,10 @@ export const getActionDisplayName = (key) => {
   return getNameFromI18N('action')[key];
 };
 
+export const getCategoryDisplayName = (key) => {
+  return getNameFromI18N('category')[key];
+};
+
 export const invertColor = (color) => {
   let c = color.replace('#', '');
   c = c.length === 3 ? c.replace(/(.)(.)(.)/, '$1$1$2$2$3$3') : c;
