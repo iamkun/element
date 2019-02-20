@@ -122,7 +122,7 @@
     padding: $--button-padding-vertical;
   }
   @include m(primary) {
-    @include button-variant($--button-primary-color, $--button-primary-fill, $--button-primary-border);
+    @include button-variant($--button-primary-font-color, $--button-primary-background-color, $--button-primary-border-color);
   }
   @include m(success) {
     @include button-variant($--button-success-color, $--button-success-fill, $--button-success-border);
