@@ -356,7 +356,7 @@
           
           <!--theme picker-->
           <li class="nav-item nav-theme-switch" v-show="isComponentPage">
-            <theme-configurator></theme-configurator>
+            <theme-configurator :key="lang"></theme-configurator>
           </li>
         </ul>
       </div>
