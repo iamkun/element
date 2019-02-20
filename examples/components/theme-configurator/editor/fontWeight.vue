@@ -20,7 +20,7 @@
   </section>
 </template>
 
-<style lang="postcss">
+<style>
 .select {
   width: 100%;
 }
