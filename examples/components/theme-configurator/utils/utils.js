@@ -63,11 +63,12 @@ export const getStyleDisplayName = (config, componentName) => {
     }
     return config.name.replace(/\[?\]?/g, '').split(',')[langIndex];
   }
-  let displayName = config.key.replace(`$--${componentName}`, '').replace();
+  let displayName = config.key.replace(`$--${componentName}-`, '').replace();
   Object.keys(displayNameMap).forEach((name) => {
     displayName = displayName.replace(name, displayNameMap[name]);
   });
-  return displayName.replace(/-/g, '');
+  displayName = displayName.replace(/-/g, ' ');
+  return displayName.trim();
 };
 
 export const getActionDisplayName = (key) => {
