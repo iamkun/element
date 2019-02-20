@@ -2,12 +2,12 @@
   {
     "lang": "zh-CN",
     "display-name": {
-      "-border-color": "边框颜色",
-      "-font-color": "文字颜色",
-      "-background-color": "背景颜色",
-      "-font-weight": "文字粗细",
-      "-font-size": "文字大小",
-      "-font-line-height": "文字行高"
+      "border-color": "边框颜色",
+      "font-color": "文字颜色",
+      "background-color": "背景颜色",
+      "font-weight": "文字粗细",
+      "font-size": "文字大小",
+      "font-line-height": "文字行高"
     },
     "action": {
       "reset-theme": "重置",
@@ -17,12 +17,12 @@
   {
     "lang": "en-US",
     "display-name": {
-      "-border-color": "border color",
-      "-font-color": "font color",
-      "-background-color": "background color",
-      "-font-weight": "font weight",
-      "-font-size": "font size",
-      "-font-line-height": "font line height"
+      "border-color": "border color",
+      "font-color": "font color",
+      "background-color": "background color",
+      "font-weight": "font weight",
+      "font-size": "font size",
+      "font-line-height": "font line height"
     },
     "action": {
       "reset-theme": "Reset",
