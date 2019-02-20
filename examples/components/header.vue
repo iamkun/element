@@ -356,7 +356,8 @@
           
           <!--theme picker-->
           <li class="nav-item nav-theme-switch" v-show="isComponentPage">
-            <theme-configurator :key="lang"></theme-configurator>
+            <theme-configurator :key="lang" v-if="showThemeConfigurator"></theme-configurator>
+            <theme-picker v-else></theme-picker>
           </li>
         </ul>
       </div>
@@ -364,6 +365,7 @@
   </div>
 </template>
 <script>
+  import ThemePicker from './theme-picker.vue';
   import ThemeConfigurator from './theme-configurator';
   import AlgoliaSearch from './search.vue';
   import compoLang from '../i18n/component.json';
@@ -390,6 +392,7 @@
     },
 
     components: {
+      ThemePicker,
       ThemeConfigurator,
       AlgoliaSearch
     },
@@ -406,6 +409,9 @@
       },
       isComponentPage() {
         return /^component/.test(this.$route.name);
+      },
+      showThemeConfigurator() {
+        return true;
       }
     },
 
