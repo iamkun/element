@@ -15,7 +15,6 @@ import './progress.js';
 export default {
   data() {
     return {
-      loadingInstance: null,
       count: 0
     };
   },
@@ -25,17 +24,10 @@ export default {
         this.count++;
         if (this.count > 1) return;
         this.$bar.start();
-        this.loadingInstance = this.$loading(
-          {
-            target: '.page-component__content .content',
-            customClass: 'loadingClass'
-          }
-        );
       } else {
         this.count--;
         if (this.count) return;
         this.$bar.finish();
-        this.loadingInstance && this.loadingInstance.close();
       }
     });
   }
