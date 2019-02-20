@@ -155,10 +155,7 @@ export default {
       } catch (e) {
         message = err;
       }
-      this.$notify.error({
-        title: 'Error',
-        message
-      });
+      this.$message.error(message);
     },
     triggerComponentLoading(val) {
       bus.$emit('user-theme-config-loading', val);
