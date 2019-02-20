@@ -1,4 +1,4 @@
-import { displayNameMap } from '../constant';
+import constant from '../constant.json';
 
 export const filterConfigType = (name) => {
   switch (name) {
@@ -39,6 +39,8 @@ export const getStyleDisplayValue = (displayValue, global) => {
 };
 
 export const getStyleDisplayName = (config, componentName) => {
+  const lang = location.hash.replace('#', '').split('/')[1] || 'zh-CN';
+  const displayNameMap = constant.filter(config => config.lang === lang)[0]['display-name'];
   if (config.name !== '[]') {
     return config.name.replace(/\[?\]?/, '').split(',')[0];
   }
