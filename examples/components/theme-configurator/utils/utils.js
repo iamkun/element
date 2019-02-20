@@ -38,15 +38,30 @@ export const getStyleDisplayValue = (displayValue, global) => {
   return displayValue;
 };
 
+const getLang = () => {
+  return location.hash.replace('#', '').split('/')[1] || 'zh-CN';
+};
+
 const getNameFromI18N = (name) => {
-  const lang = location.hash.replace('#', '').split('/')[1] || 'zh-CN';
+  const lang = getLang();
   return constant.filter(config => config.lang === lang)[0][name];
 };
 
 export const getStyleDisplayName = (config, componentName) => {
   const displayNameMap = getNameFromI18N('display-name');
   if (config.name !== '[]') {
-    return config.name.replace(/\[?\]?/, '').split(',')[0];
+    let langIndex = 0;
+    switch (getLang()) {
+      case 'zh-CN':
+        langIndex = 0;
+        break;
+      case 'es':
+        langIndex = 2;
+        break;
+      default:
+        langIndex = 1;
+    }
+    return config.name.replace(/\[?\]?/g, '').split(',')[langIndex];
   }
   let displayName = config.key.replace(`$--${componentName}`, '').replace();
   Object.keys(displayNameMap).forEach((name) => {
