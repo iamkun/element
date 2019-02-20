@@ -17,8 +17,12 @@
       "BrandColor": "品牌颜色",
       "SecondaryColor": "辅助颜色",
       "FontColor": "文字颜色",
-      "LineColor": "边框颜色",
-      "BackgroundColor": "背景颜色"
+      "BorderColor": "边框颜色",
+      "BackgroundColor": "背景颜色",
+      "Other": "其他",
+      "Color": "颜色",
+      "Border": "边框",
+      "Font": "文字"
     }
   },
   {
@@ -39,8 +43,12 @@
       "BrandColor": "Brand Color",
       "SecondaryColor": "Secondary Color",
       "FontColor": "Font Color",
-      "LineColor": "Line Color",
-      "BackgroundColor": "Background Color"
+      "BorderColor": "Border Color",
+      "BackgroundColor": "Background Color",
+      "Other": "Other",
+      "Color": "Color",
+      "Border": "Border",
+      "Font": "Font"
     }
   },
   {
