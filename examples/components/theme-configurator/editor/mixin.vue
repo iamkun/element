@@ -1,4 +1,4 @@
-<style lang="postcss">
+<style>
     .config {
       padding: 10px 0;
     }

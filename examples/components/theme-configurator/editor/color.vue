@@ -47,7 +47,7 @@
   </section>
 </template>
 
-<style lang="postcss">
+<style>
 input {
   cursor: pointer;
 }
