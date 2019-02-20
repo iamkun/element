@@ -50,18 +50,9 @@ const getNameFromI18N = (name) => {
 export const getStyleDisplayName = (config, componentName) => {
   const displayNameMap = getNameFromI18N('display-name');
   if (config.name !== '[]') {
-    let langIndex = 0;
-    switch (getLang()) {
-      case 'zh-CN':
-        langIndex = 0;
-        break;
-      case 'es':
-        langIndex = 2;
-        break;
-      default:
-        langIndex = 1;
-    }
-    return config.name.replace(/\[?\]?/g, '').split(',')[langIndex];
+    const langIndex = {'zh-CN': '0', 'es': 2, 'fr-FR': 3}[getLang()] || 1;
+    const nameArr = config.name.replace(/\[?\]?/g, '').split(',');
+    return nameArr[langIndex] || nameArr[1];
   }
   let displayName = config.key.replace(`$--${componentName}-`, '').replace();
   Object.keys(displayNameMap).forEach((name) => {
