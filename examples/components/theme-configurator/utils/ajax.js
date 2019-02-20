@@ -34,14 +34,14 @@ const xhr = (method, url, data = null, cb) => {
           } catch (e) {}
           resolve(response);
         } else {
-          reject(xhr.statusText);
+          reject(xhr.response || xhr.statusText);
         }
       } else {
-        reject(xhr.statusText);
+        reject(xhr.response || xhr.statusText);
       }
     };
     xhr.onerror = () => {
-      reject(xhr.statusText);
+      reject(xhr.response || xhr.statusText);
     };
     xhr.ontimeout = () => {
       xhr.abort();

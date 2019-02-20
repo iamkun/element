@@ -100,7 +100,7 @@ export default {
             defaultConfig = res;
           })
           .catch((err) => {
-            console.log('err: ', err);
+            this.onError(err);
           })
           .then(() => {
             setTimeout(() => {
@@ -142,11 +142,23 @@ export default {
           this.applyStyle(res, time);
         })
         .catch((err) => {
-          console.log('err: ', err);
+          this.onError(err);
         })
         .then(() => {
           this.triggerComponentLoading(false);
         });
+    },
+    onError(err) {
+      let message;
+      try {
+        message = JSON.parse(err).message;
+      } catch (e) {
+        message = err;
+      }
+      this.$notify.error({
+        title: 'Error',
+        message
+      });
     },
     triggerComponentLoading(val) {
       bus.$emit('user-theme-config-loading', val);

@@ -47,8 +47,8 @@ export default {
       this.downloading = true;
       this.$parent.onDownload()
         .then()
-        .catch((e) => {
-          console.log('e: ', e);
+        .catch((err) => {
+          this.$parent.onError(err);
         })
         .then(() => {
           this.downloading = false;
