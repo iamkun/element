@@ -52,6 +52,9 @@ export default {
       immediate: true,
       handler(value) {
         this.value = this.mergedValue;
+        if (!this.oldValue) {
+          this.oldValue = this.value;
+        }
       }
     }
   }
