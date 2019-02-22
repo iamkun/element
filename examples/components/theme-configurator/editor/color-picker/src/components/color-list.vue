@@ -23,7 +23,7 @@
     width: 100%;
   }
   .color-list {
-    max-height: 130px;
+    max-height: 138px;
     overflow: auto;
   }
   .color-list-item {
