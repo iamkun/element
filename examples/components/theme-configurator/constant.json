@@ -11,6 +11,7 @@
     },
     "action": {
       "theme-editor": "主题编辑器",
+      "no-config": "暂不可编辑，敬请期待",
       "reset-theme": "重置",
       "download-theme": "下载"
     },
@@ -38,6 +39,7 @@
     },
     "action": {
       "theme-editor": "Theme Editor",
+      "no-config": "Please stay tuned",
       "reset-theme": "Reset",
       "download-theme": "Download"
     },

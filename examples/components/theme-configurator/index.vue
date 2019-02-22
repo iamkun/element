@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-button round type="primary" @click.stop="showConfigurator">
+    <el-button round type="primary" size="mini" @click.stop="showConfigurator">
       {{getActionDisplayName("theme-editor")}}
     </el-button>
     <transition name="fade">
@@ -16,7 +16,9 @@
         </div>
         <div v-if="init && !currentConfig" class="no-config">
           <img src="../../assets/images/theme-no-config.png" alt="">
-          <span>暂不可编辑，敬请期待</span>
+          <span>
+            {{getActionDisplayName("no-config")}}
+          </span>
         </div>
         <download-area></download-area>
       </div>

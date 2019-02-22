@@ -50,58 +50,14 @@
   }
 </script>
 <style>
-  .demo-typo-box {
-    height: 200px;
-    width: 200px;
-    position: relative;
-    border: 1px solid #eaeefb;
-    font-size: 40px;
-    color: #1f2d3d;
-    text-align: center;
-    line-height: 162px;
-    padding-bottom: 36px;
-    box-sizing: border-box;
-    display: inline-block;
-    margin-right: 17px;
-    border-radius: 4px;
-
-    .name {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 35px;
-      border-top: 1px solid #eaeefb;
-      font-size: 14px;
-      color: #8492a6;
-      line-height: 35px;
-      text-align: left;
-      text-indent: 10px;
-      font-family: 'Helvetica Neue';
-    }
-  }
   .demo-typo-size {
     .color-dark-light {
       color: #99a9bf;
     }
   }
-  .typo-PingFang {
-    font-family: 'PingFang SC';
-  }
-  .typo-Hiragino {
-    font-family: 'Hiragino Sans GB';
-  }
-  .typo-Microsoft {
-    font-family: 'Microsoft YaHei';
-  }
-  /* 英文 */
-  .typo-Helvetica-Neue {
-    font-family: 'Helvetica Neue';
-  }
-  .typo-Helvetica {
-    font-family: 'Helvetica';
-  }
-  .typo-Arial {
-    font-family: 'Arial';
+  .demo-term-box img{
+    width: 23%;
+    margin: 0 4% 20px 0;
   }
 
   .lineH-left {
@@ -131,81 +87,67 @@
 
 我们对字体进行统一规范，力求在各个操作系统下都有最佳展示效果。
 
-### 中文字体
-
-<div class="demo-typo-box typo-PingFang">
-  和畅惠风
-  <div class="name">PingFang SC</div>
-</div>
-<div class="demo-typo-box typo-Hiragino">
-  和畅惠风
-  <div class="name">Hiragino Sans GB</div>
-</div>
-<div class="demo-typo-box typo-Microsoft">
-  和畅惠风
-  <div class="name">Microsoft YaHei</div>
-</div>
-
-### 英文／数字字体
-
-<div class="demo-typo-box typo-Helvetica-neue">
-  RGag
-  <div class="name">Helvetica Neue</div>
-</div>
-<div class="demo-typo-box typo-Helvetica">
-  RGag
-  <div class="name">Helvetica</div>
-</div>
-<div class="demo-typo-box typo-Arial">
-  RGag
-  <div class="name">Arial</div>
+### 字体
+<div class="demo-term-box">
+<img src="../../assets/images/term-pingfang.png" alt="">
+<img src="../../assets/images/term-hiragino.png" alt="">
+<img src="../../assets/images/term-microsoft.png" alt="">
+<img src="../../assets/images/term-sf.png" alt="">
+<img src="../../assets/images/term-helvetica.png" alt="">
+<img src="../../assets/images/term-arial.png" alt="">
 </div>
 
 ### 字号
 
 <table class="demo-typo-size">
   <tbody>
-    <tr
-    :style="{ fontSize: font_size_extra_large }"
+  <tr
     >
-      <td>主标题</td>
-      <td>用 Element 快速搭建页面</td>
-      <td class="color-dark-light">{{font_size_extra_large}} Extra large</td>
-    </tr>
-    <tr
-    :style="{ fontSize: font_size_large }"
-    >
-      <td>标题</td>
-      <td>用 Element 快速搭建页面</td>
-      <td class="color-dark-light">{{font_size_large}} large</td>
-    </tr>
-    <tr
-    :style="{ fontSize: font_size_medium }"
-    >
-      <td class="h3">小标题</td>
-      <td class="h3">用 Element 快速搭建页面</td>
-      <td class="color-dark-light">{{font_size_medium}} Medium</td>
-    </tr>
-    <tr
-    :style="{ fontSize: font_size_base }"
-    >
-      <td class="text-regular">正文</td>
-      <td class="text-regular">用 Element 快速搭建页面</td>
-      <td class="color-dark-light">{{font_size_base}} Base</td>
-    </tr>
-    <tr
-    :style="{ fontSize: font_size_small }"
-    >
-      <td class="text-small">正文（小）</td>
-      <td class="text-small">用 Element 快速搭建页面</td>
-      <td class="color-dark-light">{{font_size_small}} Small</td>
+      <td>层级</td>
+      <td>字体大小</td>
+      <td class="color-dark-light">举例</td>
     </tr>
     <tr
     :style="{ fontSize: font_size_extra_small }"
     >
       <td class="text-smaller">辅助文字</td>
-      <td class="text-smaller">用 Element 快速搭建页面</td>
       <td class="color-dark-light">{{font_size_extra_small}} Extra Small</td>
+      <td class="text-smaller">用 Element 快速搭建页面</td>
+    </tr>
+    <tr
+    :style="{ fontSize: font_size_small }"
+    >
+      <td class="text-small">正文（小）</td>
+      <td class="color-dark-light">{{font_size_small}} Small</td>
+      <td class="text-small">用 Element 快速搭建页面</td>
+    </tr>
+    <tr
+    :style="{ fontSize: font_size_base }"
+    >
+      <td class="text-regular">正文</td>
+      <td class="color-dark-light">{{font_size_base}} Base</td>
+      <td class="text-regular">用 Element 快速搭建页面</td>
+    </tr>
+    <tr
+    :style="{ fontSize: font_size_medium }"
+    >
+      <td class="h3">小标题</td>
+      <td class="color-dark-light">{{font_size_medium}} Medium</td>
+      <td class="h3">用 Element 快速搭建页面</td>
+    </tr>
+    <tr
+    :style="{ fontSize: font_size_large }"
+    >
+      <td>标题</td>
+      <td class="color-dark-light">{{font_size_large}} large</td>
+      <td>用 Element 快速搭建页面</td>
+    </tr>
+    <tr
+    :style="{ fontSize: font_size_extra_large }"
+    >
+      <td>主标题</td>
+      <td class="color-dark-light">{{font_size_extra_large}} Extra large</td>
+      <td>用 Element 快速搭建页面</td>
     </tr>
   </tbody>
 </table>
