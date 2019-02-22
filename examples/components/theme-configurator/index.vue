@@ -12,8 +12,9 @@
             @onChange = "userConfigChange"
           ></main-panel>
         </div>
-        <div v-if="init && !currentConfig">
-          <span>当前页面没有可配置的项目</span>
+        <div v-if="init && !currentConfig" class="no-config">
+          <img src="../../assets/images/theme-no-config.png" alt="">
+          <span>暂不可编辑，敬请期待</span>
         </div>
         <download-area></download-area>
       </div>
@@ -35,6 +36,19 @@
   color: #666;
   line-height: 24px;
   padding-right: 1%;
+}
+.no-config {
+  margin-top: 150px;
+  text-align: center;
+  img {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+  }
+  span {
+    color: #909399;
+    font-size: 14px;
+  }
 }
 .fade-enter,.fade-leave-to {
     transform:translateX(100%);
