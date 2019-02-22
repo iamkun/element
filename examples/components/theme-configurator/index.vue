@@ -120,6 +120,12 @@ export default {
     };
   },
   mixins: [DocStyle, Loading],
+  // mounted() {
+  //   setTimeout(() => {
+  //     console.log('受控组件测试');
+  //     this.$set(this.userConfig.global, '$--color-primary', '#F05a50');
+  //   }, 5000);
+  // },
   computed: {
     globalValue() {
       return filterGlobalValue(this.defaultConfig, this.userConfig);

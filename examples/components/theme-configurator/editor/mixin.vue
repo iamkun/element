@@ -28,6 +28,12 @@ export default {
     },
     userConfig: {
       type: Object
+    },
+    golbalValue: {
+      type: Object
+    },
+    componentName: {
+      type: String
     }
   },
   computed: {

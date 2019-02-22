@@ -5,35 +5,12 @@
     </div>
     <div class="config-content">
       <div class="content-80">
-        <el-popover
-          ref="popover"
-          placement="top-start"
-          :trigger="popoverTrigger"
-        >
-          <ul
-          class="color-list"
-          >
-            <li
-              v-for="(color, key) in golbalColorList" 
-              :key="key"
-              :style="{ 
-                backgroundColor: color.color,
-                color: color.colorInvert
-              }"
-              @click="onListColorClick(color)"
-              class="list-item"
-            >
-              {{color.label}}
-              {{color.color}}
-            </li>
-          </ul>
-          <el-input
-            :value=displayValue
-            readonly
-            slot="reference"
-            @click.native="onInputClick"
-          ></el-input>
-        </el-popover>
+        <el-input
+          :value=displayValue
+          readonly
+          slot="reference"
+          @click.native="onInputClick"
+        ></el-input>
       </div>
       <div class="content-20">
         <color-picker 
@@ -55,27 +32,6 @@ input {
   margin-left: 10px;
   vertical-align: bottom;
 }
-.color-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  max-height: 400px;
-  overflow-x: auto;
-  .list-item {
-    border: 1px solid #eee;
-    margin: 3px;
-    text-align: center;
-    line-height: 40px;
-    height: 40px;
-    border-radius: 3px;
-    font-size: 12px;
-    cursor: pointer;
-    &:hover {
-      opacity: .8;
-      box-shadow: 0 0 8px 0 #eee;
-    }
-  }
-}
 </style>
 
 <script>
@@ -84,14 +40,6 @@ import { getStyleDisplayValue, getStyleDisplayName, invertColor } from '../utils
 import ColorPicker from './color-picker';
 
 export default {
-  props: {
-    golbalValue: {
-      type: Object
-    },
-    componentName: {
-      type: String
-    }
-  },
   components: {
     ColorPicker
   },
@@ -121,12 +69,6 @@ export default {
     displayName() {
       return getStyleDisplayName(this.config, this.componentName);
     },
-    isGlobalColor() {
-      return this.mergedValue.startsWith('$');
-    },
-    popoverTrigger() {
-      return this.isGlobalColor ? 'click' : 'manual';
-    },
     golbalColorList() {
       return Object.keys(this.golbalColor).map((c) => (
         {
@@ -139,12 +81,7 @@ export default {
     }
   },
   methods: {
-    onListColorClick(e) {
-      this.onChange(e.value);
-      this.$refs.popover && this.$refs.popover.doClose();
-    },
     onInputClick() {
-      if (this.isGlobalColor) return;
       this.$refs.colorPicker && this.$refs.colorPicker.handleTrigger();
     },
     onPickerChange(e) {
