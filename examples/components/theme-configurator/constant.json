@@ -10,6 +10,7 @@
       "font-line-height": "文字行高"
     },
     "action": {
+      "theme-editor": "主题编辑器",
       "reset-theme": "重置",
       "download-theme": "下载"
     },
@@ -36,6 +37,7 @@
       "font-line-height": "font line height"
     },
     "action": {
+      "theme-editor": "Theme Editor",
       "reset-theme": "Reset",
       "download-theme": "Download"
     },
