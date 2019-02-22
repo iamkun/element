@@ -28,7 +28,7 @@
   margin-left: calc(16%);
 }
 .action-button-right {
-  margin-left: calc(10%)!important;
+  margin-left: calc(16%)!important;
 }
 </style>
 <script>
