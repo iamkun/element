@@ -36,12 +36,12 @@
         </el-popover>
       </div>
       <div class="content-20">
-        <el-color-picker 
+        <color-picker 
           ref="colorPicker"
           class="colorPicker"
           v-model="pickerColor" 
           @change=onPickerChange
-        ></el-color-picker>
+        ></color-picker>
       </div>
     </div>
   </section>
@@ -81,6 +81,7 @@ input {
 <script>
 import Mixin from './mixin';
 import { getStyleDisplayValue, getStyleDisplayName, invertColor } from '../utils/utils.js';
+import ColorPicker from './color-picker';
 
 export default {
   props: {
@@ -90,6 +91,9 @@ export default {
     componentName: {
       type: String
     }
+  },
+  components: {
+    ColorPicker
   },
   data() {
     return {
