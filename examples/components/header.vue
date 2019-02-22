@@ -17,6 +17,7 @@
     .container {
       height: 100%;
       box-sizing: border-box;
+      border-bottom: 1px solid #DCDFE6;
     }
 
     .nav-lang-spe {
@@ -122,23 +123,24 @@
 
       a {
         text-decoration: none;
-        color: #888;
+        color: #1989FA;
+        opacity: 0.5;
         display: block;
         padding: 0 22px;
 
         &.active,
         &:hover {
-          color: #333;
+          opacity: 1;
         }
 
         &.active::after {
           content: '';
           display: inline-block;
           position: absolute;
-          bottom: 15px;
-          left: calc(50% - 7px);
-          width: 14px;
-          height: 4px;
+          bottom: 0;
+          left: calc(50% - 15px);
+          width: 30px;
+          height: 2px;
           background: #409EFF;
         }
       }
