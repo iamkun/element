@@ -34,6 +34,7 @@
           {{ t('el.colorpicker.confirm') }}
         </el-button>
       </div>
+      <color-list v-if="colorList" :color="color" :colors="colorList"></color-list>
     </div>
   </transition>
 </template>
@@ -43,6 +44,7 @@
   import HueSlider from './hue-slider';
   import AlphaSlider from './alpha-slider';
   import Predefine from './predefine';
+  import ColorList from './color-list';
   import Popper from 'element-ui/src/utils/vue-popper';
   import Locale from 'element-ui/src/mixins/locale';
   import ElInput from 'element-ui/packages/input';
@@ -59,7 +61,8 @@
       AlphaSlider,
       ElInput,
       ElButton,
-      Predefine
+      Predefine,
+      ColorList
     },
 
     props: {
@@ -67,7 +70,8 @@
         required: true
       },
       showAlpha: Boolean,
-      predefine: Array
+      predefine: Array,
+      colorList: Array
     },
 
     data() {

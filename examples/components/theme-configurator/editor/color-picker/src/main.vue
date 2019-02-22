@@ -25,7 +25,8 @@
        @clear="clearValue"
        :color="color"
        :show-alpha="showAlpha"
-       :predefine="predefine">
+       :predefine="predefine"
+       :colorList="colorList">
     </picker-dropdown>
   </div>
 </template>
@@ -48,7 +49,8 @@
       disabled: Boolean,
       size: String,
       popperClass: String,
-      predefine: Array
+      predefine: Array,
+      colorList: Array
     },
 
     inject: {
