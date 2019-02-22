@@ -56,30 +56,29 @@
     }
   }
   .demo-term-box img{
-    width: 23%;
+    width: 24%;
     margin: 0 4% 20px 0;
   }
 
   .lineH-left {
     display: inline-block;
-    width: 50%;
+    height: 80px
   }
   .lineH-right {
-    width: 30%;
     display: inline-block;
     list-style: none;
-    padding: 3px 0 0 90px;
+    padding: 0 0 0 90px;
     margin: 0;
     vertical-align: top;
   }
   .lineH-right li{
-    font-size: 14px;
+    font-size: 13px;
     color: #666;
-    padding-bottom: 10px;
+    height: 20px;
+    line-height: 20px;
   }
   .lineH-right li span{
-    float: right;
-    padding-right: 40px;
+    padding-left: 40px;
   }
 </style>
 
