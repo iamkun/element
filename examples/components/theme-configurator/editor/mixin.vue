@@ -21,6 +21,7 @@
     }
 </style>
 <script>
+import { getStyleDisplayName } from '../utils/utils.js';
 export default {
   props: {
     config: {
@@ -39,6 +40,12 @@ export default {
   computed: {
     mergedValue() {
       return this.userConfig[this.config.key] || this.config.value;
+    },
+    displayName() {
+      return getStyleDisplayName(this.config, this.componentName);
+    },
+    isGlobal() {
+      return !this.config.value.startsWith('$');
     }
   },
   methods: {

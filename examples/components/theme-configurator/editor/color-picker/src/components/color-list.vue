@@ -65,6 +65,7 @@
     methods: {
       handleSelect(index) {
         this.color.fromString(this.colors[index].value);
+        this.$emit('select', this.colors[index]);
       },
       parseColors(colors, color) {
         return colors.map(value => {

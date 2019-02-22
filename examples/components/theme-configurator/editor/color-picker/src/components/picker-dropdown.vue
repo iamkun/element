@@ -19,13 +19,13 @@
             size="mini">
           </el-input>
         </span>
-        <el-button
+        <!-- <el-button
           size="mini"
           type="text"
           class="el-color-dropdown__link-btn"
           @click="$emit('clear')">
           {{ t('el.colorpicker.clear') }}
-        </el-button>
+        </el-button> -->
         <el-button
           plain
           size="mini"
@@ -34,7 +34,12 @@
           {{ t('el.colorpicker.confirm') }}
         </el-button>
       </div>
-      <color-list v-if="colorList" :color="color" :colors="colorList"></color-list>
+      <color-list 
+        v-if="colorList" 
+        :color="color" 
+        :colors="colorList"
+        @select=onColorListSelect
+      ></color-list>
     </div>
   </transition>
 </template>
@@ -90,6 +95,10 @@
     methods: {
       confirmValue() {
         this.$emit('pick');
+      },
+
+      onColorListSelect(e) {
+        this.$emit('pick', e);
       },
 
       handleConfirm() {

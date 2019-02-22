@@ -120,9 +120,9 @@
         if (this.colorDisabled) return;
         this.showPicker = !this.showPicker;
       },
-      confirmValue() {
-        const value = this.color.value;
-        this.$emit('input', value);
+      confirmValue(selection) {
+        const value = selection || this.color.value;
+        // this.$emit('input', value);
         this.$emit('change', value);
         this.dispatch('ElFormItem', 'el.form.change', value);
         this.showPicker = false;
