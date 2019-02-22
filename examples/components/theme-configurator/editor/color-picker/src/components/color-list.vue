@@ -33,7 +33,7 @@
     margin: 2px 0;
   }
   .color-list-item:hover {
-    background: #eee;
+    background: #efefef;
   }
   .color-list-item-ball {
     height: 20px;
