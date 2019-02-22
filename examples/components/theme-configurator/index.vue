@@ -1,6 +1,8 @@
 <template>
   <div>
-    <el-button type="text" @click.stop="showConfigurator">Theme</el-button>
+    <el-button round type="primary" @click.stop="showConfigurator">
+      {{getActionDisplayName("theme-editor")}}
+    </el-button>
     <transition name="fade">
       <div v-show="visible" class="configurator" ref="configurator">
         <div v-if="currentConfig">
@@ -69,7 +71,12 @@
 import bus from '../../bus';
 import { getVars, updateVars } from './utils/api.js';
 import mainPanel from './main';
-import { filterConfigType, filterGlobalValue, updateDomHeadStyle } from './utils/utils.js';
+import {
+  filterConfigType,
+  filterGlobalValue,
+  updateDomHeadStyle,
+  getActionDisplayName
+} from './utils/utils.js';
 import DocStyle from './docStyle';
 import Loading from './loading';
 import DownloadArea from './download';
@@ -99,6 +106,9 @@ export default {
     }
   },
   methods: {
+    getActionDisplayName(key) {
+      return getActionDisplayName(key);
+    },
     showConfigurator() {
       this.visible = !this.visible;
       bus.$emit('user-theme-config-visible', this.visible);
