@@ -16,10 +16,12 @@
 .action-area {
   position: fixed;
   bottom: 0;
-  background: #FFF;
+  background: #F5F7FA;
   height: 70px;
   line-height: 70px;
-  width: 100%;
+  width: 23%;
+  box-sizing: border-box;
+  right: .6%;
   opacity: .95;
 }
 .action-button {

@@ -1,26 +1,32 @@
 <template>
   <div>
-    <el-button round type="primary" size="mini" @click.stop="showConfigurator">
-      {{getActionDisplayName("theme-editor")}}
-    </el-button>
+    <el-button
+      round
+      type="primary"
+      size="mini"
+      @click.stop="showConfigurator"
+    >{{getActionDisplayName("theme-editor")}}</el-button>
     <transition name="fade">
       <div v-show="visible" class="configurator" ref="configurator">
-        <div v-if="currentConfig">
-          <main-panel
-            :currentConfig = "currentConfig"
-            :defaultConfig = "defaultConfig"
-            :userConfig = "userConfig"
-            :globalValue = "globalValue"
-            @onChange = "userConfigChange"
-          ></main-panel>
+        <div 
+          class="main-configurator"
+          :style="{'min-height': sidebarMinHeight}"
+        >
+          <div v-if="currentConfig">
+            <main-panel
+              :currentConfig="currentConfig"
+              :defaultConfig="defaultConfig"
+              :userConfig="userConfig"
+              :globalValue="globalValue"
+              @onChange="userConfigChange"
+            ></main-panel>
+          </div>
+          <div v-if="init && !currentConfig" class="no-config">
+            <img src="../../assets/images/theme-no-config.png" alt>
+            <span>{{getActionDisplayName("no-config")}}</span>
+          </div>
+          <download-area></download-area>
         </div>
-        <div v-if="init && !currentConfig" class="no-config">
-          <img src="../../assets/images/theme-no-config.png" alt="">
-          <span>
-            {{getActionDisplayName("no-config")}}
-          </span>
-        </div>
-        <download-area></download-area>
       </div>
     </transition>
   </div>
@@ -29,17 +35,25 @@
 <style>
 .configurator {
   height: 100%;
-  width: 20%;
+  width: 24%;
   position: fixed;
   overflow-y: auto;
-  top: 80px;
+  top: 79px;
   right: 0;
   bottom: 0;
-  border-left: 1px solid #eee;
   background: #fff;
   color: #666;
   line-height: 24px;
   padding-right: 1%;
+}
+.configurator .main-configurator {
+  background: #F5F7FA;
+  border: 1px solid #EBEEF5;
+  box-shadow: 0 2px 10px 0 rgba(0,0,0,0.06);
+  border-radius: 8px;
+  width: 97%;
+  box-sizing: border-box;
+  margin: 0 .5% 0 5%;
 }
 .no-config {
   margin-top: 130px;
@@ -100,7 +114,8 @@ export default {
         global: {},
         local: {}
       },
-      lastApply: 0
+      lastApply: 0,
+      sidebarMinHeight: `${window.innerHeight - 80}px`
     };
   },
   mixins: [DocStyle, Loading],
