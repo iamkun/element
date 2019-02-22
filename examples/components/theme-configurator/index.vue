@@ -40,7 +40,7 @@
   padding-right: 1%;
 }
 .no-config {
-  margin-top: 150px;
+  margin-top: 130px;
   text-align: center;
   img {
     width: 50%;
@@ -48,6 +48,8 @@
     margin: 0 auto;
   }
   span {
+    margin-top: 10px;
+    display: block;
     color: #909399;
     font-size: 14px;
   }
