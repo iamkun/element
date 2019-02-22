@@ -39,6 +39,7 @@ const defaultFontLineHeight = [
   '28px'
 ];
 import Mixin from './mixin';
+import { getStyleDisplayName } from '../utils/utils.js';
 
 export default {
   props: {
