@@ -15,7 +15,6 @@
 
 <script>
 import Mixin from './mixin';
-import { getStyleDisplayName } from '../utils/utils.js';
 
 export default {
   props: {
@@ -33,11 +32,6 @@ export default {
     };
   },
   mixins: [Mixin],
-  computed: {
-    displayName() {
-      return getStyleDisplayName(this.config, this.componentName);
-    }
-  },
   methods: {
     onUpdate(e) {
       const { value } = e.target;

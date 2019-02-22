@@ -67,14 +67,8 @@ export default {
     displayValue() {
       return getStyleDisplayValue(this.mergedValue, this.golbalColor);
     },
-    displayName() {
-      return getStyleDisplayName(this.config, this.componentName);
-    },
-    isGlobalColor() {
-      return !this.mergedValue.startsWith('$');
-    },
     golbalColorList() {
-      return this.isGlobalColor ? [] : Object.keys(this.golbalColor).map((c) => (
+      return this.isGlobal ? [] : Object.keys(this.golbalColor).map((c) => (
         {
           label: getStyleDisplayName(this.golbalColor[c]),
           value: this.golbalColor[c].value,
@@ -88,7 +82,7 @@ export default {
       this.$refs.colorPicker && this.$refs.colorPicker.handleTrigger();
     },
     onPickerChange(e) {
-      this.onChange(e);
+      this.onChange(e.variable || e);
     }
   }
 };
