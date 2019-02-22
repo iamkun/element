@@ -35,6 +35,7 @@
 .configurator {
   height: 100%;
   width: 24%;
+  max-width: 400px;
   position: fixed;
   overflow-y: auto;
   top: 79px;
