@@ -20,6 +20,7 @@
   height: 70px;
   line-height: 70px;
   width: 23%;
+  max-width: 400px;
   box-sizing: border-box;
   right: .6%;
   opacity: .95;
