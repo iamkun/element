@@ -27,9 +27,10 @@
   padding: 10px;
 }
 .category-name {
+  color: #C0C4CC;
   font-size: 18px;
   display: block;
-  margin: 30px 0;
+  margin: 8px 0 4px 0;
 }
 </style>
 

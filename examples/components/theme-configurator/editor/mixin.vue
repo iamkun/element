@@ -1,9 +1,9 @@
 <style>
     .config {
-      padding: 10px 0;
+      padding: 5px 0;
     }
     .config-label {
-      color: #666;
+      color: #606266;;
       font-size: 14px;
       padding-bottom: 5px;
     }
