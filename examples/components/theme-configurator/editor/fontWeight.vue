@@ -44,6 +44,7 @@ const defaultFontWeight = [
   'inherit'
 ];
 import Mixin from './mixin';
+import { getStyleDisplayName } from '../utils/utils.js';
 
 export default {
   props: {
