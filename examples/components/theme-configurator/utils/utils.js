@@ -70,12 +70,6 @@ export const getCategoryDisplayName = (key) => {
   return getNameFromI18N('category')[key];
 };
 
-export const invertColor = (color) => {
-  let c = color.replace('#', '');
-  c = c.length === 3 ? c.replace(/(.)(.)(.)/, '$1$1$2$2$3$3') : c;
-  return (parseInt(c, 16) > 0xfffffe) ? '#000' : '#fff';
-};
-
 export const updateDomHeadStyle = (id, styleContent) => {
   let styleTag = document.getElementById(id);
   if (!styleTag) {

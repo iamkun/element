@@ -18,6 +18,7 @@
           class="colorPicker"
           v-model="pickerColor" 
           @change=onPickerChange
+          :colorList="golbalColorList"
         ></color-picker>
       </div>
     </div>
@@ -36,7 +37,7 @@ input {
 
 <script>
 import Mixin from './mixin';
-import { getStyleDisplayValue, getStyleDisplayName, invertColor } from '../utils/utils.js';
+import { getStyleDisplayValue, getStyleDisplayName } from '../utils/utils.js';
 import ColorPicker from './color-picker';
 
 export default {
@@ -69,13 +70,15 @@ export default {
     displayName() {
       return getStyleDisplayName(this.config, this.componentName);
     },
+    isGlobalColor() {
+      return !this.mergedValue.startsWith('$');
+    },
     golbalColorList() {
-      return Object.keys(this.golbalColor).map((c) => (
+      return this.isGlobalColor ? [] : Object.keys(this.golbalColor).map((c) => (
         {
           label: getStyleDisplayName(this.golbalColor[c]),
-          color: this.golbalColor[c].value,
-          value: c,
-          colorInvert: invertColor(this.golbalColor[c].value)
+          value: this.golbalColor[c].value,
+          variable: c
         }
       ));
     }
