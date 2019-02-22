@@ -35,7 +35,7 @@
         </el-button>
       </div>
       <color-list 
-        v-if="colorList" 
+        v-if="colorList && colorList.length > 0" 
         :color="color" 
         :colors="colorList"
         @select=onColorListSelect
