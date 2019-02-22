@@ -137,7 +137,7 @@
     .page-component__content {
       transition:padding-right 0.3s ease;
       &.theme-config {
-        padding-right: 22%;  
+        padding-right: 26%;  
       }
     }
     .page-container.page-component {
