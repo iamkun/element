@@ -25,10 +25,10 @@
   opacity: .95;
 }
 .action-button {
-  margin-left: calc(4%);
+  margin-left: calc(16%);
 }
 .action-button-right {
-  margin-left: calc(2%)!important;
+  margin-left: calc(10%)!important;
 }
 </style>
 <script>
