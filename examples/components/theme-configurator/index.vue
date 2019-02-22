@@ -10,7 +10,6 @@
       <div v-show="visible" class="configurator" ref="configurator">
         <div 
           class="main-configurator"
-          :style="{'min-height': sidebarMinHeight}"
         >
           <div v-if="currentConfig">
             <main-panel
@@ -47,6 +46,8 @@
   padding-right: 1%;
 }
 .configurator .main-configurator {
+  height: 100%;
+  overflow: auto;
   background: #F5F7FA;
   border: 1px solid #EBEEF5;
   box-shadow: 0 2px 10px 0 rgba(0,0,0,0.06);
@@ -114,8 +115,7 @@ export default {
         global: {},
         local: {}
       },
-      lastApply: 0,
-      sidebarMinHeight: `${window.innerHeight - 80}px`
+      lastApply: 0
     };
   },
   mixins: [DocStyle, Loading],
