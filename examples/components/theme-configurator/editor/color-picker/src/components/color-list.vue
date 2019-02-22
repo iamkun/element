@@ -17,36 +17,39 @@
 </template>
 <style>
   .color-list-container {
-   width: 100%;
- }
- .color-list {
-   max-height: 130px;
-   overflow: auto;
- }
- .color-list-item {
-   height: 24px;
-   width: 100%;
-   cursor: pointer;
-   margin: 2px 0;
- }
- .color-list-item:hover {
-   background: #eee;
- }
- .color-list-item-ball {
-   height: 20px;
-   width: 20px;
-   margin-top: 2px;
-   margin-left: 5px;
-   border-radius: 100%;
-   display: inline-block;
- }
- .color-list-item-label {
-   margin-left: 10px;
-   font-size: 13px;
-   line-height: 24px;
-   display: inline-block;
-   vertical-align: super;
- }
+    border-top: 1px solid #EBEEF5;
+    margin-top: 15px;
+    padding-top: 10px;
+    width: 100%;
+  }
+  .color-list {
+    max-height: 130px;
+    overflow: auto;
+  }
+  .color-list-item {
+    height: 24px;
+    width: 100%;
+    cursor: pointer;
+    margin: 2px 0;
+  }
+  .color-list-item:hover {
+    background: #eee;
+  }
+  .color-list-item-ball {
+    height: 20px;
+    width: 20px;
+    margin-top: 2px;
+    margin-left: 5px;
+    border-radius: 100%;
+    display: inline-block;
+  }
+  .color-list-item-label {
+    margin-left: 10px;
+    font-size: 13px;
+    line-height: 24px;
+    display: inline-block;
+    vertical-align: super;
+  }
 </style>
 
 <script>
