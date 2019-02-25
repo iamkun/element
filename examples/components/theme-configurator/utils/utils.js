@@ -13,7 +13,7 @@ export const filterConfigType = (name) => {
 
 export const filterGlobalValue = (defaultConfig, userConfig) => {
   const valueObject = {};
-  const globalArr = ['color', 'typography'];
+  const globalArr = ['color', 'typography', 'border'];
   globalArr.forEach((global) => {
     const configObj = {};
     defaultConfig.find((config) => {

@@ -39,6 +39,7 @@ import ColorEditor from './editor/color';
 import fontWeightEditor from './editor/fontWeight';
 import fontSizeEditor from './editor/fontSize';
 import fontLineHeightEditor from './editor/fontLineHeight';
+import borderRadiusEditor from './editor/borderRadius';
 import boxShadowEditor from './editor/boxShadow';
 import simpleTextEditor from './editor/simpleText';
 import { filterConfigType, getCategoryDisplayName } from './utils/utils.js';
@@ -49,6 +50,7 @@ export default {
     fontSizeEditor,
     fontLineHeightEditor,
     simpleTextEditor,
+    borderRadiusEditor,
     boxShadowEditor,
     fontWeightEditor
   },
@@ -91,6 +93,8 @@ export default {
           return fontSizeEditor;
         case 'fontLineHeight':
           return fontLineHeightEditor;
+        case 'borderRadius':
+          return borderRadiusEditor;
         case 'boxShadow':
           return boxShadowEditor;
         default:
