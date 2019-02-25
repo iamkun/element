@@ -6,6 +6,7 @@
       color: #606266;;
       font-size: 14px;
       padding-bottom: 5px;
+      position: relative;
     }
     .config-content {
 
