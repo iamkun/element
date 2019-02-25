@@ -7,7 +7,8 @@
       "background-color": "背景颜色",
       "font-weight": "文字粗细",
       "font-size": "文字大小",
-      "font-line-height": "文字行高"
+      "font-line-height": "文字行高",
+      "border-radius": "边框圆角"
     },
     "action": {
       "theme-editor": "主题编辑器",
@@ -25,7 +26,7 @@
       "Color": "颜色",
       "Border": "边框",
       "Font": "文字",
-      "Radius": "圆角",
+      "Radius": "边框圆角",
       "Shadow": "阴影",
       "FontSize": "文字大小",
       "FontWeight": "文字粗细",
@@ -40,7 +41,8 @@
       "background-color": "background color",
       "font-weight": "font weight",
       "font-size": "font size",
-      "font-line-height": "font line height"
+      "font-line-height": "font line height",
+      "border-radius": "border radius"
     },
     "action": {
       "theme-editor": "Theme Editor",
