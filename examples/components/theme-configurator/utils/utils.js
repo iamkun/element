@@ -1,4 +1,4 @@
-import constant from '../constant.json';
+import constant from '../../../i18n/theme-editor.json';
 
 export const filterConfigType = (name) => {
   switch (name) {
