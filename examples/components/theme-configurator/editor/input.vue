@@ -4,7 +4,11 @@
     v-model="value"
     @blur="onUpdate"
     v-bind="$attrs"
-  ></el-input>
+  >
+    <template slot="suffix">
+      <slot name="suffix"></slot>
+    </template>
+  </el-input>
 </template>
 
 <script>
