@@ -4,51 +4,33 @@
       {{displayName}}
     </div>
     <div class="config-content">
-      <el-input 
-        @keyup.enter.native="onUpdate"
-        v-model="value"
-        @blur="onUpdate"
-      ></el-input>
+      <theme-input 
+        :val="value"
+        @change="onChange"
+      ></theme-input>
     </div>
   </section>
 </template>
 
 <script>
+import Input from './input';
 import Mixin from './mixin';
 
 export default {
-  props: {
-    componentName: {
-      type: String
-    },
-    golbalValue: {
-      type: Object
-    }
+  components: {
+    themeInput: Input
   },
   data() {
     return {
-      value: '',
-      oldValue: ''
+      value: ''
     };
   },
   mixins: [Mixin],
-  methods: {
-    onUpdate(e) {
-      const { value } = e.target;
-      if (value !== this.oldValue) {
-        this.oldValue = value;
-        this.onChange(value);
-      }
-    }
-  },
   watch: {
     'config.value': {
       immediate: true,
       handler(value) {
         this.value = this.mergedValue;
-        if (!this.oldValue) {
-          this.oldValue = this.value;
-        }
       }
     }
   }
