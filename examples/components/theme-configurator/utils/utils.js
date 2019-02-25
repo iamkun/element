@@ -63,11 +63,11 @@ export const getStyleDisplayName = (config, componentName) => {
 };
 
 export const getActionDisplayName = (key) => {
-  return getNameFromI18N('action')[key];
+  return getNameFromI18N('action')[key] || key;
 };
 
 export const getCategoryDisplayName = (key) => {
-  return getNameFromI18N('category')[key];
+  return getNameFromI18N('category')[key] || key;
 };
 
 export const updateDomHeadStyle = (id, styleContent) => {

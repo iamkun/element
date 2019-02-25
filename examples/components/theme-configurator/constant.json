@@ -24,7 +24,12 @@
       "Other": "其他",
       "Color": "颜色",
       "Border": "边框",
-      "Font": "文字"
+      "Font": "文字",
+      "Radius": "圆角",
+      "Shadow": "阴影",
+      "FontSize": "文字大小",
+      "FontWeight": "文字粗细",
+      "LineHeight": "文字行高"
     }
   },
   {
@@ -49,10 +54,9 @@
       "FontColor": "Font Color",
       "BorderColor": "Border Color",
       "BackgroundColor": "Background Color",
-      "Other": "Other",
-      "Color": "Color",
-      "Border": "Border",
-      "Font": "Font"
+      "FontSize": "Font Size",
+      "FontWeight": "Font Weight",
+      "LineHeight": "Line Height"
     }
   },
   {
