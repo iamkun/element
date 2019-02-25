@@ -1,7 +1,15 @@
 <template>
   <section class="config" :key="displayName">
     <div class="config-label">
-      {{displayName}}
+      {{displayName}} 
+      <el-button 
+        class="plus-button" 
+        size="mini" 
+        round 
+        icon="el-icon-plus"
+        @click.stop="onAddShadow"
+      >
+      </el-button>
     </div>
     <div class="config-content" v-for="(each, key) in valueArr" :key="key">
       <div class="content-10">
@@ -41,13 +49,22 @@
         </theme-input>
       </div>
       <div class="content-15">
-        -
+        <el-button 
+          size="mini" 
+          round 
+          icon="el-icon-minus"
+          @click.stop="val => onMinusShadow(key)"
+        ></el-button>
       </div>
     </div>
   </section>
 </template>
 
 <style scoped>
+.plus-button {
+  position: absolute;
+  left: 85%;
+}
 .colorPicker {
   margin-left: 0;
 }
@@ -69,7 +86,6 @@
 import Mixin from './mixin';
 import Input from './input';
 import ColorPicker from './color-picker';
-// import { getStyleDisplayValue } from '../utils/utils.js';
 
 export default {
   components: {
@@ -83,10 +99,25 @@ export default {
   },
   mixins: [Mixin],
   methods: {
+    onAddShadow() {
+      this.valueArr.push({
+        x: 0,
+        y: 0,
+        blur: 0,
+        rgba: 'rgba(0,0,0,0)'
+      });
+    },
+    onMinusShadow(index) {
+      this.valueArr.splice(index, 1);
+      this.onShadowChange();
+    },
     onInputChange(e, index, key) {
       const arr = this.valueArr[index];
       arr[key] = e;
       this.valueArr.splice(index, 1, arr);
+      this.onShadowChange();
+    },
+    onShadowChange() {
       this.onChange(
         this.valueArr.map((v) => (`${v.x}px, ${v.y}px, ${v.blur}px, ${v.rgba}`)).join(', ')
       );
