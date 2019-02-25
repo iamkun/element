@@ -9,7 +9,10 @@
         <span class="color-list-item-ball" :style="{'background-color': item.value}">
         </span>
         <div class="color-list-item-label">
-          {{item.info.label}} ({{item.info.value}})
+          {{item.info.label}} 
+        </div>
+        <div class="color-list-item-value">
+          {{item.info.value}} 
         </div>
       </div>
     </div>
@@ -44,7 +47,15 @@
     display: inline-block;
   }
   .color-list-item-label {
-    margin-left: 10px;
+    margin-left: 15px;
+    font-size: 13px;
+    line-height: 24px;
+    display: inline-block;
+    vertical-align: super;
+    width: 30%;
+  }
+  .color-list-item-value { 
+    margin-left: 15px;
     font-size: 13px;
     line-height: 24px;
     display: inline-block;
