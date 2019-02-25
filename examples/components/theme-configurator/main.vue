@@ -39,6 +39,7 @@ import ColorEditor from './editor/color';
 import fontWeightEditor from './editor/fontWeight';
 import fontSizeEditor from './editor/fontSize';
 import fontLineHeightEditor from './editor/fontLineHeight';
+import boxShadowEditor from './editor/boxShadow';
 import simpleTextEditor from './editor/simpleText';
 import { filterConfigType, getCategoryDisplayName } from './utils/utils.js';
 
@@ -48,6 +49,7 @@ export default {
     fontSizeEditor,
     fontLineHeightEditor,
     simpleTextEditor,
+    boxShadowEditor,
     fontWeightEditor
   },
   props: {
@@ -89,6 +91,8 @@ export default {
           return fontSizeEditor;
         case 'fontLineHeight':
           return fontLineHeightEditor;
+        case 'boxShadow':
+          return boxShadowEditor;
         default:
           return simpleTextEditor;
       }
