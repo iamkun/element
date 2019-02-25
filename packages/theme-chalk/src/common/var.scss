@@ -88,7 +88,7 @@ $--border-radius-circle: 100% !default;
 // Box-shadow
 /// boxShadow|[基础投影,box shadow base,box shadow base]|Shadow|1
 $--box-shadow-base: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04) !default;
-// 项目没用过 boxShadow|[深色投影,box shadow,box shadow]
+/// boxShadow|[深色投影,box shadow,box shadow]
 $--box-shadow-dark: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .12) !default;
 /// boxShadow|[浅色投影,box shadow,box shadow]|Shadow|1
 $--box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1) !default;
@@ -453,13 +453,19 @@ $--button-mini-border-radius: #{$--border-radius-base - 1} !default;
 $--button-mini-padding-vertical: 7px !default;
 $--button-mini-padding-horizontal: 15px !default;
 
-$--button-default-color: $--color-text-regular !default;
-$--button-default-fill: $--color-white !default;
-$--button-default-border: $--border-color-base !default;
+/// color|[]|Color|0
+$--button-default-font-color: $--color-text-regular !default;
+/// color|[]|Color|0
+$--button-default-background-color: $--color-white !default;
+/// color|[]|Color|0
+$--button-default-border-color: $--border-color-base !default;
 
-$--button-disabled-color: $--color-text-placeholder !default;
-$--button-disabled-fill: $--color-white !default;
-$--button-disabled-border: $--border-color-lighter !default;
+/// color|[]|Color|0
+$--button-disabled-font-color: $--color-text-placeholder !default;
+/// color|[]|Color|0
+$--button-disabled-background-color: $--color-white !default;
+/// color|[]|Color|0
+$--button-disabled-border-color: $--border-color-lighter !default;
 
 /// color|[]|Color|0
 $--button-primary-border-color: $--color-primary !default;
@@ -467,22 +473,30 @@ $--button-primary-border-color: $--color-primary !default;
 $--button-primary-font-color: $--color-white !default;
 /// color|[]|Color|0
 $--button-primary-background-color: $--color-primary !default;
-
-$--button-success-border: $--color-success !default;
-$--button-success-color: $--color-white !default;
-$--button-success-fill: $--color-success !default;
-
-$--button-warning-border: $--color-warning !default;
-$--button-warning-color: $--color-white !default;
-$--button-warning-fill: $--color-warning !default;
-
-$--button-danger-border: $--color-danger !default;
-$--button-danger-color: $--color-white !default;
-$--button-danger-fill: $--color-danger !default;
-
-$--button-info-border: $--color-info !default;
-$--button-info-color: $--color-white !default;
-$--button-info-fill: $--color-info !default;
+/// color|[]|Color|0
+$--button-success-border-color: $--color-success !default;
+/// color|[]|Color|0
+$--button-success-font-color: $--color-white !default;
+/// color|[]|Color|0
+$--button-success-background-color: $--color-success !default;
+/// color|[]|Color|0
+$--button-warning-border-color: $--color-warning !default;
+/// color|[]|Color|0
+$--button-warning-font-color: $--color-white !default;
+/// color|[]|Color|0
+$--button-warning-background-color: $--color-warning !default;
+/// color|[]|Color|0
+$--button-danger-border-color: $--color-danger !default;
+/// color|[]|Color|0
+$--button-danger-font-color: $--color-white !default;
+/// color|[]|Color|0
+$--button-danger-background-color: $--color-danger !default;
+/// color|[]|Color|0
+$--button-info-border-color: $--color-info !default;
+/// color|[]|Color|0
+$--button-info-font-color: $--color-white !default;
+/// color|[]|Color|0
+$--button-info-background-color: $--color-info !default;
 
 $--button-hover-tint-percent: 20% !default;
 $--button-active-shade-percent: 10% !default;
