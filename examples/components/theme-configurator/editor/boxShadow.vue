@@ -9,35 +9,39 @@
           size="mini"
           class="colorPicker"
           v-model="each.rgba" 
+          @change="val => onInputChange(val, key, 'rgba')"
           show-alpha
         ></color-picker>
       </div>
-      <div class="content-20">
-        <el-input 
+      <div class="content-25">
+        <theme-input  
           size="mini"
-          @keyup.enter.native="onUpdate"
-          v-model="each.x" 
+          :val="each.x" 
+          @change="val => onInputChange(Number(val), key, 'x')"
         >
           <span slot="suffix">X</span>
-        </el-input>
+        </theme-input>
       </div>
-      <div class="content-20">
-        <el-input 
+      <div class="content-25">
+        <theme-input 
           size="mini"
-          @keyup.enter.native="onUpdate"
-          v-model="each.y" 
+          :val="each.y" 
+          @change="val => onInputChange(Number(val), key, 'y')"
         >
           <span slot="suffix">Y</span>
-        </el-input>
+        </theme-input>
       </div>
-      <div class="content-20">
-        <el-input 
+      <div class="content-25">
+        <theme-input 
           size="mini"
-          @keyup.enter.native="onUpdate"
-          v-model="each.blur" 
+          :val="each.blur" 
+          @change="val => onInputChange(Number(val), key, 'blur')"
         >
           <span slot="suffix">Blur</span>
-        </el-input>
+        </theme-input>
+      </div>
+      <div class="content-15">
+        -
       </div>
     </div>
   </section>
@@ -47,50 +51,61 @@
 .colorPicker {
   margin-left: 0;
 }
-.content-20 .el-input__suffix-inner span{
+.content-25 .el-input__suffix-inner span{
   line-height: 28px;
 }
-.content-20 {
-  padding-left: 5px;
+.content-25 {
+  box-sizing: border-box;
+  width: 25%;
+  padding: 0 5px;
+  display: inline-block;
+  vertical-align: bottom;
 }
-
+.config-content {
+  padding: 5px 0;
+}
 </style>
 <script>
 import Mixin from './mixin';
+import Input from './input';
 import ColorPicker from './color-picker';
 // import { getStyleDisplayValue } from '../utils/utils.js';
 
 export default {
   components: {
-    ColorPicker
+    ColorPicker,
+    themeInput: Input
   },
   data() {
     return {
-      value: '',
-      pickerColor: '',
       valueArr: []
     };
   },
   mixins: [Mixin],
   methods: {
-
-  },
-  computed: {
-
+    onInputChange(e, index, key) {
+      const arr = this.valueArr[index];
+      arr[key] = e;
+      this.valueArr.splice(index, 1, arr);
+      this.onChange(
+        this.valueArr.map((v) => (`${v.x}px, ${v.y}px, ${v.blur}px, ${v.rgba}`)).join(', ')
+      );
+    }
   },
   watch: {
     'config.value': {
       immediate: true,
       handler(value) {
-        const demo = '0 2px 4px rgba(0, 0, 0, .12)';
-        const match = demo.match(/(\d+)|(rgba\(.*?\))/g);
-        this.value = value;
-        this.valueArr.push({
-          x: match[0],
-          y: match[1],
-          blur: match[2],
-          rgba: match[3]
-        });
+        const match = this.mergedValue.match(/(\d+)|(rgba\(.*?\))/g);
+        while (match.length) {
+          this.valueArr.push({
+            x: match[0],
+            y: match[1],
+            blur: match[2],
+            rgba: match[3]
+          });
+          match.splice(0, 4);
+        }
       }
     }
   }

@@ -24,6 +24,11 @@
       width: 10%;
       vertical-align: bottom;
     }
+    .content-15 {
+      display: inline-block;
+      width: 15%;
+      vertical-align: bottom;
+    }
 </style>
 <script>
 import { getStyleDisplayName } from '../utils/utils.js';
