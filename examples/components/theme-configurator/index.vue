@@ -175,8 +175,8 @@ export default {
     },
     applyStyle(res, time) {
       if (time < this.lastApply) return;
-      updateDomHeadStyle('chalk-style', res);
       this.updateDocs();
+      updateDomHeadStyle('chalk-style', res);
       this.lastApply = time;
     },
     onDownload() {
