@@ -27,7 +27,7 @@ export default {
   },
   mixins: [Mixin],
   watch: {
-    'config.value': {
+    'mergedValue': {
       immediate: true,
       handler(value) {
         this.value = this.mergedValue;
