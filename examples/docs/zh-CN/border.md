@@ -2,11 +2,15 @@
   import bus from '../../bus';
   const varMap = {
     '$--box-shadow-light': 'boxShadowLight',
-    '$--box-shadow-base': 'boxShadowBase'
+    '$--box-shadow-base': 'boxShadowBase',
+    '$--border-radius-base': 'borderRadiusBase',
+    '$--border-radius-small': 'borderRadiusSmall'
   };
   const original = {
     boxShadowLight: '0 2px 12px 0 rgba(0, 0, 0, 0.1)',
-    boxShadowBase: '0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)'
+    boxShadowBase: '0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)',
+    borderRadiusBase: '4px',
+    borderRadiusSmall: '2px'
   }
   export default {
     created() {
@@ -26,14 +30,15 @@
       return {
         global: {},
         boxShadowLight: '',
-        boxShadowBase: ''
+        boxShadowBase: '',
+        borderRadiusBase: '',
+        borderRadiusSmall: ''
       }
     },
     watch: {
       global: {
         immediate: true,
         handler(value) {
-          let i = 0;
           Object.keys(varMap).forEach((c) => {
             if (value[c]) {
               this[varMap[c]] = value[c]
@@ -89,12 +94,6 @@
   border-radius: 0;
   margin-top: 20px;
 }
-.demo-radius .radius-4 {
-  border-radius: 4px;
-}
-.demo-radius .radius-2 {
-  border-radius: 2px;
-}
 .demo-radius .radius-30 {
   border-radius: 30px;
 }
@@ -144,13 +143,19 @@
   </el-col>
   <el-col :span="6" :xs="{span: 12}">
     <div class="title">小圆角</div>
-    <div class="value">border-radius: 2px</div>
-    <div class="radius radius-2"></div>
+    <div class="value">border-radius: {{borderRadiusSmall}}</div>
+    <div 
+      class="radius" 
+      :style="{ borderRadius: borderRadiusSmall }"
+    ></div>
   </el-col>
   <el-col :span="6" :xs="{span: 12}">
     <div class="title">大圆角</div>
-    <div class="value">border-radius: 4px</div>
-    <div class="radius radius-4"></div>
+    <div class="value">border-radius: {{borderRadiusBase}}</div>
+    <div 
+      class="radius"
+      :style="{ borderRadius: borderRadiusBase }"
+    ></div>
   </el-col>
   <el-col :span="6" :xs="{span: 12}">
     <div class="title">圆形圆角</div>
