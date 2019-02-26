@@ -123,16 +123,22 @@ export default {
       );
     }
   },
-  mounted() {
-    const match = this.mergedValue.match(/(\d+)|(rgba\(.*?\))/g);
-    while (match.length) {
-      this.valueArr.push({
-        x: match[0],
-        y: match[1],
-        blur: match[2],
-        rgba: match[3]
-      });
-      match.splice(0, 4);
+  watch: {
+    'mergedValue': {
+      immediate: true,
+      handler(value) {
+        const match = this.mergedValue.match(/(\d+)|(rgba\(.*?\))/g);
+        this.valueArr = [];
+        while (match.length) {
+          this.valueArr.push({
+            x: match[0],
+            y: match[1],
+            blur: match[2],
+            rgba: match[3]
+          });
+          match.splice(0, 4);
+        }
+      }
     }
   }
 };
