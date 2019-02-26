@@ -2,6 +2,7 @@
   {
     "lang": "zh-CN",
     "display-name": {
+      "color": "颜色",
       "border-color": "边框颜色",
       "font-color": "文字颜色",
       "background-color": "背景颜色",
