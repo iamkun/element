@@ -1,9 +1,13 @@
 <script>
   import bus from '../../bus';
-  const Map = {
+  const varMap = {
     '$--box-shadow-light': 'boxShadowLight',
     '$--box-shadow-base': 'boxShadowBase'
   };
+  const original = {
+    boxShadowLight: '0 2px 12px 0 rgba(0, 0, 0, 0.1)',
+    boxShadowBase: '0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)'
+  }
   export default {
     created() {
       bus.$on('user-theme-config-update', this.setGlobal);
@@ -21,16 +25,20 @@
     data() {
       return {
         global: {},
-        boxShadowLight: '0 2px 12px 0 rgba(0, 0, 0, 0.1)',
-        boxShadowBase: '0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)'
+        boxShadowLight: '',
+        boxShadowBase: ''
       }
     },
     watch: {
       global: {
+        immediate: true,
         handler(value) {
-          Object.keys(value).forEach((c) => {
-            if (Map[c]) {
-              this[Map[c]] = value[c]
+          let i = 0;
+          Object.keys(varMap).forEach((c) => {
+            if (value[c]) {
+              this[varMap[c]] = value[c]
+            } else {
+              this[varMap[c]] = original[varMap[c]]
             }
           });
         }
