@@ -16,39 +16,48 @@
         <color-picker 
           size="mini"
           class="colorPicker"
-          v-model="each.rgba" 
-          @change="val => onInputChange(val, key, 'rgba')"
+          v-model="each.color" 
+          @change="val => onInputChange(val, key, 'color')"
           show-alpha
         ></color-picker>
       </div>
-      <div class="content-25">
+      <div class="content-20">
         <theme-input  
           size="mini"
-          :val="each.x" 
-          @change="val => onInputChange(Number(val), key, 'x')"
+          :val="each.offsetX" 
+          @change="val => onInputChange(Number(val), key, 'offsetX')"
         >
           <span slot="suffix">X</span>
         </theme-input>
       </div>
-      <div class="content-25">
+      <div class="content-20">
         <theme-input 
           size="mini"
-          :val="each.y" 
-          @change="val => onInputChange(Number(val), key, 'y')"
+          :val="each.offsetY" 
+          @change="val => onInputChange(Number(val), key, 'offsetY')"
         >
           <span slot="suffix">Y</span>
         </theme-input>
       </div>
-      <div class="content-25">
+      <div class="content-20">
         <theme-input 
           size="mini"
-          :val="each.blur" 
-          @change="val => onInputChange(Number(val), key, 'blur')"
+          :val="each.spreadRadius" 
+          @change="val => onInputChange(Number(val), key, 'spreadRadius')"
+        >
+          <span slot="suffix">Spread</span>
+        </theme-input>
+      </div>
+      <div class="content-20">
+        <theme-input 
+          size="mini"
+          :val="each.blurRadius" 
+          @change="val => onInputChange(Number(val), key, 'blurRadius')"
         >
           <span slot="suffix">Blur</span>
         </theme-input>
       </div>
-      <div class="content-15">
+      <div class="content-10">
         <el-button 
           size="mini" 
           round 
@@ -63,28 +72,29 @@
 <style scoped>
 .plus-button {
   position: absolute;
-  left: 85%;
+  left: 90%;
 }
 .colorPicker {
   margin-left: 0;
 }
-.content-25 .el-input__suffix-inner span{
+.content-20 .el-input__suffix-inner span{
   line-height: 28px;
 }
-.content-25 {
-  box-sizing: border-box;
-  width: 25%;
-  padding: 0 5px;
-  display: inline-block;
-  vertical-align: bottom;
+.content-20 {
+  padding: 0 3px;
 }
 .config-content {
   padding: 5px 0;
+}
+/* Element buton style override */
+.el-button--mini.is-round {
+  padding: 7px 10px;  
 }
 </style>
 <script>
 import Mixin from './mixin';
 import Input from './input';
+import { parse as parseShaodw, stringify as stringifyShaodw } from '../utils/boxShadow.js';
 import ColorPicker from './color-picker';
 
 export default {
@@ -101,10 +111,12 @@ export default {
   methods: {
     onAddShadow() {
       this.valueArr.push({
-        x: 0,
-        y: 0,
-        blur: 0,
-        rgba: 'rgba(0,0,0,0)'
+        offsetX: 0,
+        offsetY: 0,
+        spreadRadius: 0,
+        blurRadius: 0,
+        color: 'rgba(0,0,0,0)',
+        inset: false
       });
     },
     onMinusShadow(index) {
@@ -119,7 +131,7 @@ export default {
     },
     onShadowChange() {
       this.onChange(
-        this.valueArr.map((v) => (`${v.x}px ${v.y}px ${v.blur}px ${v.rgba}`)).join(', ')
+        stringifyShaodw(this.valueArr)
       );
     }
   },
@@ -127,17 +139,7 @@ export default {
     'mergedValue': {
       immediate: true,
       handler(value) {
-        const match = this.mergedValue.match(/(\d+)|(rgba\(.*?\))/g);
-        this.valueArr = [];
-        while (match.length) {
-          this.valueArr.push({
-            x: match[0],
-            y: match[1],
-            blur: match[2],
-            rgba: match[3]
-          });
-          match.splice(0, 4);
-        }
+        this.valueArr = parseShaodw(value);
       }
     }
   }

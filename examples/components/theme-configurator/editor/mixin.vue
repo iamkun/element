@@ -12,20 +12,24 @@
 
     }
     .content-80 {
+      box-sizing: border-box;
       display: inline-block;
       width: 80%;
     }
     .content-20 {
+      box-sizing: border-box;
       display: inline-block;
       width: 20%;
       vertical-align: bottom;
     }
     .content-10 {
+      box-sizing: border-box;
       display: inline-block;
       width: 10%;
       vertical-align: bottom;
     }
     .content-15 {
+      box-sizing: border-box;
       display: inline-block;
       width: 15%;
       vertical-align: bottom;
