@@ -94,7 +94,7 @@ export default {
     }
   },
   watch: {
-    'config.value': {
+    'mergedValue': {
       immediate: true,
       handler(value) {
         this.initSelectOption();
