@@ -1,35 +1,48 @@
 <template>
   <div class="action-area">
+    <div class="action-area-main">
     <div class="action-button">
       <el-button type="warning" @click.stop="onReset">{{getActionDisplayName("reset-theme")}}</el-button>
+    </div>
+    <div class="action-button">
       <el-button 
-        class="action-button-right" 
         type="primary" 
         :loading=downloading
         @click.stop="onDownload">
         {{getActionDisplayName("download-theme")}}
       </el-button>
+      </div>
     </div>
   </div>
 </template>
 <style>
-.action-area {
+.action-area { 
+  width: 24%;
+  max-width: 400px;
   position: fixed;
+  right: 0;
   bottom: 0;
+  padding-right: 1%;
+}
+@media (min-width: 1600px) {
+  .action-area {
+    padding-right: calc((100% - 1600px) / 2);
+  }
+}
+.action-area-main {
+  opacity: .95;
   background: #F5F7FA;
   height: 70px;
-  line-height: 70px;
-  width: 23%;
-  max-width: 400px;
+  bottom: 0;
+  width: 97%;
   box-sizing: border-box;
-  right: .6%;
-  opacity: .95;
+  margin: 0 .5% 0 5%;
 }
 .action-button {
-  margin-left: calc(16%);
-}
-.action-button-right {
-  margin-left: calc(16%)!important;
+  width: 50%;
+  text-align: center;
+  display: inline-block;
+  padding-top: 15px;
 }
 </style>
 <script>
