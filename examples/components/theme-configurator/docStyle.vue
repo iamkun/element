@@ -11,12 +11,8 @@ export default {
   },
   methods: {
     updateDocStyle(e) {
-      const val = e.global['$--color-primary'];
+      const val = e.global['$--color-primary'] || ORIGINAL_THEME;
       const oldVal = this.theme;
-      if (typeof val !== 'string') {
-        updateDomHeadStyle('docs-style', '');
-        return;
-      }
       const getHandler = (variable, id) => {
         return () => {
           let newStyle = this.updateStyle(this[variable], ORIGINAL_THEME, val);
