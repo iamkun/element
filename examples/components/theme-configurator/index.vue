@@ -184,6 +184,13 @@ export default {
         xhr.responseType = 'blob';
       });
     },
+    onReset() {
+      this.userConfig = {
+        global: {},
+        local: {}
+      };
+      this.onAction();
+    },
     onAction() {
       this.triggerComponentLoading(true);
       const time = +new Date();

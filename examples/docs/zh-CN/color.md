@@ -1,23 +1,40 @@
 <script>
   import bus from '../../bus';
   import { tintColor } from '../../color.js';
-  const ColorMap = {
-    '$--color-primary': 'primary',
-    '$--color-success': 'success',
-    '$--color-warning': 'warning',
-    '$--color-danger': 'danger',
-    '$--color-info': 'info',
-    '$--color-white': 'white',
-    '$--color-black': 'black',
-    '$--color-text-primary': 'textPrimary',
-    '$--color-text-regular': 'textRegular',
-    '$--color-text-secondary': 'textSecondary',
-    '$--color-text-placeholder': 'textPlaceholder',
-    '$--border-color-base': 'borderBase',
-    '$--border-color-light': 'borderLight',
-    '$--border-color-lighter': 'borderLighter',
-    '$--border-color-extra-light': 'borderExtraLight'
+  const dataMap = {
+    'primary': '$--color-primary',
+    'success': '$--color-success',
+    'warning': '$--color-warning',
+    'danger': '$--color-danger',
+    'info': '$--color-info',
+    'white': '$--color-white',
+    'black': '$--color-black',
+    'textPrimary': '$--color-text-primary',
+    'textRegular': '$--color-text-regular',
+    'textSecondary': '$--color-text-secondary',
+    'textPlaceholder': '$--color-text-placeholder',
+    'borderBase': '$--border-color-base',
+    'borderLight': '$--border-color-light',
+    'borderLighter': '$--border-color-lighter',
+    'borderExtraLight': '$--border-color-extra-light'
   };
+  const original = {
+    primary: '#409EFF',
+    success: '#67C23A',
+    warning: '#E6A23C',
+    danger: '#F56C6C',
+    info: '#909399',
+    white: '#FFFFFF',
+    black: '#000000',
+    textPrimary: '#303133',
+    textRegular: '#606266',
+    textSecondary: '#909399',
+    textPlaceholder: '#C0C4CC',
+    borderBase: '#DCDFE6',
+    borderLight: '#E4E7ED',
+    borderLighter: '#EBEEF5',
+    borderExtraLight: '#F2F6FC'
+  }
   export default {
     created() {
       bus.$on('user-theme-config-update', this.setGlobal);
@@ -38,29 +55,32 @@
     data() {
       return {
         global: {},
-        primary: '#409EFF',
-        success: '#67C23A',
-        warning: '#E6A23C',
-        danger: '#F56C6C',
-        info: '#909399',
-        white: '#FFFFFF',
-        black: '#000000',
-        textPrimary: '#303133',
-        textRegular: '#606266',
-        textSecondary: '#909399',
-        textPlaceholder: '#C0C4CC',
-        borderBase: '#DCDFE6',
-        borderLight: '#E4E7ED',
-        borderLighter: '#EBEEF5',
-        borderExtraLight: '#F2F6FC'
+        primary: '',
+        success: '',
+        warning: '',
+        danger: '',
+        info: '',
+        white: '',
+        black: '',
+        textPrimary: '',
+        textRegular: '',
+        textSecondary: '',
+        textPlaceholder: '',
+        borderBase: '',
+        borderLight: '',
+        borderLighter: '',
+        borderExtraLight: ''
       }
     },
     watch: {
       global: {
+        immediate: true,
         handler(value) {
-          Object.keys(value).forEach((color) => {
-            if (ColorMap[color]) {
-              this[ColorMap[color]] = value[color]
+          Object.keys(original).forEach((o) => {
+            if (value[dataMap[o]]) {
+              this[o] = value[dataMap[o]]
+            } else {
+              this[o] = original[o]
             }
           });
         }

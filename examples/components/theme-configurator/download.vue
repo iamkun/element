@@ -55,10 +55,11 @@ export default {
   },
   methods: {
     onReset() {
-      this.$parent.visible = false;
-      setTimeout(() => {
-        window.location.reload(false);
-      }, 260);
+      this.$parent.onReset();
+      // this.$parent.visible = false;
+      // setTimeout(() => {
+      //   window.location.reload(false);
+      // }, 260);
     },
     getActionDisplayName(key) {
       return getActionDisplayName(key);
