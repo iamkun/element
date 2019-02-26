@@ -1,7 +1,7 @@
 <script>
   import bus from '../../bus';
   import { tintColor } from '../../color.js';
-  const dataMap = {
+  const varMap = {
     'primary': '$--color-primary',
     'success': '$--color-success',
     'warning': '$--color-warning',
@@ -77,8 +77,8 @@
         immediate: true,
         handler(value) {
           Object.keys(original).forEach((o) => {
-            if (value[dataMap[o]]) {
-              this[o] = value[dataMap[o]]
+            if (value[varMap[o]]) {
+              this[o] = value[varMap[o]]
             } else {
               this[o] = original[o]
             }

@@ -8,6 +8,14 @@
     '$--font-size-small',
     '$--font-size-extra-small'
   ];
+  const original = {
+    'font_size_extra_large': '20px',
+    'font_size_large': '18px',
+    'font_size_medium': '16px',
+    'font_size_base': '14px',
+    'font_size_small': '13px',
+    'font_size_extra_small': '12px'
+  }
   export default {
     created() {
       bus.$on('user-theme-config-update', this.setGlobal);
@@ -28,20 +36,24 @@
     data() {
       return {
         global: {},
-        'font_size_extra_large': '20px',
-        'font_size_large': '18px',
-        'font_size_medium': '16px',
-        'font_size_base': '14px',
-        'font_size_small': '13px',
-        'font_size_extra_small': '12px'
+        'font_size_extra_large': '',
+        'font_size_large': '',
+        'font_size_medium': '',
+        'font_size_base': '',
+        'font_size_small': '',
+        'font_size_extra_small': ''
       }
     },
     watch: {
       global: {
+        immediate: true,
         handler(value) {
-          Object.keys(value).forEach((v) => {
-            if (varMap.indexOf(v) > -1) {
-              this[v.replace('$--', '').replace(/-/g, '_')] = value[v]
+          varMap.forEach((v) => {
+            const key = v.replace('$--', '').replace(/-/g, '_')
+            if (value[v]) {
+              this[key] = value[v]
+            } else {
+              this[key] = original[key]
             }
           });
         }
