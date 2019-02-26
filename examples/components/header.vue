@@ -453,8 +453,8 @@
       xhr.send();
       let primaryLast = '#409EFF';
       bus.$on('user-theme-config-update', (val) => {
-        const primaryColor = val.global['$--color-primary'];
-        if (!primaryColor) return;
+        let primaryColor = val.global['$--color-primary'];
+        if (!primaryColor) primaryColor = '#409EFF';
         const base64svg = 'data:image/svg+xml;base64,';
         const imgSet = document.querySelectorAll('h1 img');
         imgSet.forEach((img) => {
