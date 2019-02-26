@@ -1,6 +1,11 @@
+const defaultError = 'Server Error 500';
+const defaultTimeout = 'Request Timeout';
 const xhr = (method, url, data = null, cb) => {
   return new window.Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
+    const doReject = (xhr) => {
+      reject(xhr.response || xhr.statusText || defaultError);
+    };
     xhr.open(method, url);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.timeout = 10000;
@@ -34,18 +39,18 @@ const xhr = (method, url, data = null, cb) => {
           } catch (e) {}
           resolve(response);
         } else {
-          reject(xhr.response || xhr.statusText);
+          doReject(xhr);
         }
       } else {
-        reject(xhr.response || xhr.statusText);
+        doReject(xhr);
       }
     };
     xhr.onerror = () => {
-      reject(xhr.response || xhr.statusText);
+      doReject(xhr);
     };
     xhr.ontimeout = () => {
       xhr.abort();
-      reject('timeout');
+      reject(defaultTimeout);
     };
     xhr.send(JSON.stringify(data));
   });
