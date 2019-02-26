@@ -119,7 +119,7 @@ export default {
     },
     onShadowChange() {
       this.onChange(
-        this.valueArr.map((v) => (`${v.x}px, ${v.y}px, ${v.blur}px, ${v.rgba}`)).join(', ')
+        this.valueArr.map((v) => (`${v.x}px ${v.y}px ${v.blur}px ${v.rgba}`)).join(', ')
       );
     }
   },
