@@ -1,3 +1,4 @@
+import deepmerge from 'deepmerge';
 import constant from '../../../i18n/theme-editor.json';
 
 export const filterConfigType = (name) => {
@@ -16,11 +17,9 @@ export const filterGlobalValue = (defaultConfig, userConfig) => {
   const globalArr = ['color', 'typography', 'border'];
   globalArr.forEach((global) => {
     const configObj = {};
-    defaultConfig.find((config) => {
-      return config.name === global;
-    }).config.forEach((c) => {
-      configObj[c.key] = c;
-    });
+    defaultConfig
+      .find(config => (config.name === global))
+      .config.forEach(c => (configObj[c.key] = deepmerge({}, c)));
     valueObject[global] = configObj;
     Object.keys(configObj).forEach((c) => {
       if (userConfig.global[c]) {
