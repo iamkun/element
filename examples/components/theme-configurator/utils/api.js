@@ -6,6 +6,10 @@ const hostList = {
   production: 'https://ssr.elenet.me/element-theme-server/'
 };
 
+console.log(process.env.DOMAIN_ENV);
+console.log(process.env.FAAS_ENV);
+console.log(process.env.ENV);
+
 const host = hostList[process.env.DOMAIN_ENV] || hostList.production;
 
 export const getVars = () => {
