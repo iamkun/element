@@ -1,6 +1,12 @@
 import { post, get } from './ajax';
 
-const host = process.env.NODE_ENV !== 'production' ? 'http://localhost:3008/' : 'https://ssr.alpha.elenet.me/element-theme-server/';
+const hostList = {
+  local: 'http://localhost:3008/',
+  alpha: 'https://ssr.alpha.elenet.me/element-theme-server/',
+  production: 'https://ssr.elenet.me/element-theme-server/'
+};
+
+const host = hostList[process.env.DOMAIN_ENV] || hostList.production;
 
 export const getVars = () => {
   return get(`${host}getVariable`);
