@@ -121,30 +121,30 @@
     <tr
     :style="{ fontSize: font_size_extra_small }"
     >
-      <td class="text-smaller">辅助文字</td>
+      <td>辅助文字</td>
       <td class="color-dark-light">{{font_size_extra_small}} Extra Small</td>
-      <td class="text-smaller">用 Element 快速搭建页面</td>
+      <td>用 Element 快速搭建页面</td>
     </tr>
     <tr
     :style="{ fontSize: font_size_small }"
     >
-      <td class="text-small">正文（小）</td>
+      <td>正文（小）</td>
       <td class="color-dark-light">{{font_size_small}} Small</td>
-      <td class="text-small">用 Element 快速搭建页面</td>
+      <td>用 Element 快速搭建页面</td>
     </tr>
     <tr
     :style="{ fontSize: font_size_base }"
     >
-      <td class="text-regular">正文</td>
+      <td>正文</td>
       <td class="color-dark-light">{{font_size_base}} Base</td>
-      <td class="text-regular">用 Element 快速搭建页面</td>
+      <td>用 Element 快速搭建页面</td>
     </tr>
     <tr
     :style="{ fontSize: font_size_medium }"
     >
-      <td class="h3">小标题</td>
+      <td>小标题</td>
       <td class="color-dark-light">{{font_size_medium}} Medium</td>
-      <td class="h3">用 Element 快速搭建页面</td>
+      <td>用 Element 快速搭建页面</td>
     </tr>
     <tr
     :style="{ fontSize: font_size_large }"
