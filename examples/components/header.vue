@@ -413,7 +413,8 @@
         return /^component/.test(this.$route.name);
       },
       showThemeConfigurator() {
-        return true;
+        const host = location.hostname;
+        return host.match('localhost') || host.match('elenet');
       }
     },
 
