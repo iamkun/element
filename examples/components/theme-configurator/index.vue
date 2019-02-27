@@ -10,6 +10,7 @@
       <div v-show="visible" class="configurator" ref="configurator">
         <div 
           class="main-configurator"
+          ref="mainConfigurator"
         >
           <div v-if="currentConfig">
             <main-panel
@@ -220,6 +221,11 @@ export default {
   watch: {
     '$route.path'() {
       this.defaultConfig && this.filterCurrentConfig();
+      if (!this.$refs.mainConfigurator) return;
+      this.$nextTick(() => {
+        this.$refs.mainConfigurator.scrollTop = 0;
+      });
+
     }
   }
 };
