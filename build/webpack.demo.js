@@ -181,9 +181,7 @@ const webpackConfig = {
     new ProgressBarPlugin(),
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
-      'process.env.DOMAIN_ENV': JSON.stringify(process.env.DOMAIN_ENV),
-      'process.env.FAAS_ENV': JSON.stringify(process.env.FAAS_ENV),
-      'process.env.ENV': JSON.stringify(process.env.ENV)
+      'process.env.FAAS_ENV': JSON.stringify(process.env.FAAS_ENV)
     }),
     new webpack.LoaderOptionsPlugin({
       vue: {
