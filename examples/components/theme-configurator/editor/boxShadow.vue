@@ -20,6 +20,7 @@
           @change="val => onInputChange(val, key, 'color')"
           show-alpha
         ></color-picker>
+        <span class="content-tip">Color</span>
       </div>
       <div class="content-20">
         <theme-input  
@@ -27,8 +28,8 @@
           :val="each.offsetX" 
           @change="val => onInputChange(Number(val), key, 'offsetX')"
         >
-          <span slot="suffix">X</span>
         </theme-input>
+        <span class="content-tip">X-px</span>
       </div>
       <div class="content-20">
         <theme-input 
@@ -36,8 +37,8 @@
           :val="each.offsetY" 
           @change="val => onInputChange(Number(val), key, 'offsetY')"
         >
-          <span slot="suffix">Y</span>
         </theme-input>
+        <span class="content-tip">Y-px</span>
       </div>
       <div class="content-20">
         <theme-input 
@@ -45,8 +46,8 @@
           :val="each.spreadRadius" 
           @change="val => onInputChange(Number(val), key, 'spreadRadius')"
         >
-          <span slot="suffix">Spread</span>
         </theme-input>
+        <span class="content-tip">Spread</span>
       </div>
       <div class="content-20">
         <theme-input 
@@ -54,8 +55,8 @@
           :val="each.blurRadius" 
           @change="val => onInputChange(Number(val), key, 'blurRadius')"
         >
-          <span slot="suffix">Blur</span>
         </theme-input>
+        <span class="content-tip">Blur</span>
       </div>
       <div class="content-10">
         <el-button 
@@ -83,12 +84,19 @@
 .content-20 {
   padding: 0 3px;
 }
+.content-10 { 
+  vertical-align: top;
+}
+.content-tip {
+  color: #909399;
+  font-size: 12px;
+}
 .config-content {
   padding: 5px 0;
 }
 /* Element buton style override */
 .el-button--mini.is-round {
-  padding: 7px 10px;  
+  padding: 3px 3px;  
 }
 </style>
 <script>
