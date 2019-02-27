@@ -64,14 +64,14 @@ $--border-color-lighter: #EBEEF5 !default;
 /// color|[四级边框颜色,border color extra light,border color extra light]|BorderColor|3
 $--border-color-extra-light: #F2F6FC !default;
 
+// Background
+/// color|[基础背景色,base background color,base background color]|BackgroundColor|4
+$--background-color-base: #f5f7fa !default;
+
 /* Link
 -------------------------- */
 $--link-color: $--color-primary-light-2 !default;
 $--link-hover-color: $--color-primary !default;
-
-/* Background
--------------------------- */
-$--background-color-base: #f5f7fa !default;
 
 /* Border
 -------------------------- */
@@ -83,12 +83,13 @@ $--border-base: $--border-width-base $--border-style-base $--border-color-base !
 $--border-radius-base: 4px !default;
 /// borderRadius|[小圆角,border radius small,border radius small]|Radius|0
 $--border-radius-small: 2px !default;
+/// borderRadius|[圆形圆角,border radius circle,border radius circle]|Radius|0
 $--border-radius-circle: 100% !default;
 
 // Box-shadow
 /// boxShadow|[基础投影,box shadow base,box shadow base]|Shadow|1
 $--box-shadow-base: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04) !default;
-/// boxShadow|[深色投影,box shadow,box shadow]
+// boxShadow|[深色投影,box shadow,box shadow]|Shadow|1
 $--box-shadow-dark: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .12) !default;
 /// boxShadow|[浅色投影,box shadow,box shadow]|Shadow|1
 $--box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1) !default;
@@ -194,15 +195,22 @@ $--checkbox-button-checked-border-color: $--color-primary !default;
 
 /* Radio
 -------------------------- */
-$--radio-font-size: 14px !default;
+/// fontSize|[]|Font|1
+$--radio-font-size: $--font-size-base !default;
+/// fontWeight|[]|Font|1
 $--radio-font-weight: $--font-weight-primary !default;
-$--radio-color: $--color-text-regular !default;
+/// color|[]|Color|0
+$--radio-font-color: $--color-text-regular !default;
 $--radio-input-height: 14px !default;
 $--radio-input-width: 14px !default;
+/// borderRadius|[]|Border|2
 $--radio-input-border-radius: $--border-radius-circle !default;
-$--radio-input-fill: $--color-white !default;
+/// color|[]|Color|0
+$--radio-input-background-color: $--color-white !default;
 $--radio-input-border: $--border-base !default;
+/// color|[]|Color|0
 $--radio-input-border-color: $--border-color-base !default;
+/// color|[]|Color|0
 $--radio-icon-color: $--color-white !default;
 
 $--radio-disabled-input-border-color: $--disabled-border-base !default;
@@ -213,9 +221,13 @@ $--radio-disabled-checked-input-border-color: $--disabled-border-base !default;
 $--radio-disabled-checked-input-fill: $--disabled-fill-base !default;
 $--radio-disabled-checked-icon-color: $--color-text-placeholder !default;
 
-$--radio-checked-text-color: $--color-primary !default;
+/// color|[]|Color|0
+$--radio-checked-font-color: $--color-primary !default;
+/// color|[]|Color|0
 $--radio-checked-input-border-color: $--color-primary !default;
-$--radio-checked-input-fill: $--color-white !default;
+/// color|[]|Color|0
+$--radio-checked-input-background-color: $--color-white !default;
+/// color|[]|Color|0
 $--radio-checked-icon-color: $--color-primary !default;
 
 $--radio-input-border-color-hover: $--color-primary !default;
@@ -235,9 +247,13 @@ $--radio-bordered-mini-input-height: 12px !default;
 $--radio-bordered-mini-input-width: 12px !default;
 $--radio-bordered-mini-height: 28px !default;
 
+/// fontSize|[]|Font|1
 $--radio-button-font-size: $--font-size-base !default;
-$--radio-button-checked-fill: $--color-primary !default;
-$--radio-button-checked-color: $--color-white !default;
+/// color|[]|Color|0
+$--radio-button-checked-background-color: $--color-primary !default;
+/// color|[]|Color|0
+$--radio-button-checked-font-color: $--color-white !default;
+/// color|[]|Color|0
 $--radio-button-checked-border-color: $--color-primary !default;
 $--radio-button-disabled-checked-fill: $--border-color-extra-light !default;
 

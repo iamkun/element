@@ -57,8 +57,8 @@
 
     &:checked {
       & + .el-radio-button__inner {
-        color: $--radio-button-checked-color;
-        background-color: $--radio-button-checked-fill;
+        color: $--radio-button-checked-font-color;
+        background-color: $--radio-button-checked-background-color;
         border-color: $--radio-button-checked-border-color;
         box-shadow: -1px 0 0 0 $--radio-button-checked-border-color;
       }
