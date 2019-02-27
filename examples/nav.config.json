@@ -834,6 +834,10 @@
               "title": "Typography"
             },
             {
+              "path": "/border",
+              "title": "Border"
+            },
+            {
               "path": "/icon",
               "title": "Icon"
             },
