@@ -1,130 +1,181 @@
+<script>
+  import bus from '../../bus';
+  const varMap = {
+    '$--box-shadow-light': 'boxShadowLight',
+    '$--box-shadow-base': 'boxShadowBase',
+    '$--border-radius-base': 'borderRadiusBase',
+    '$--border-radius-small': 'borderRadiusSmall'
+  };
+  const original = {
+    boxShadowLight: '0 2px 12px 0 rgba(0, 0, 0, 0.1)',
+    boxShadowBase: '0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)',
+    borderRadiusBase: '4px',
+    borderRadiusSmall: '2px'
+  }
+  export default {
+    created() {
+      bus.$on('user-theme-config-update', this.setGlobal);
+    },
+    mounted() {
+      this.setGlobal();
+    },
+    methods: {
+      setGlobal() {
+        if (window.userThemeConfig) {
+          this.global = window.userThemeConfig.global;
+        }
+      }
+    },
+    data() {
+      return {
+        global: {},
+        boxShadowLight: '',
+        boxShadowBase: '',
+        borderRadiusBase: '',
+        borderRadiusSmall: ''
+      }
+    },
+    watch: {
+      global: {
+        immediate: true,
+        handler(value) {
+          Object.keys(varMap).forEach((c) => {
+            if (value[c]) {
+              this[varMap[c]] = value[c]
+            } else {
+              this[varMap[c]] = original[varMap[c]]
+            }
+          });
+        }
+      }
+    }
+  }
+</script>
+
 <style>
-  .demo-color-box {
-    border-radius: 4px;
-    padding: 20px;
-    margin: 5px 0;
-    height: 74px;
-    box-sizing: border-box;
-    color: #fff;
-    font-size: 14px;
-
-    & .value {
-      font-size: 12px;
-      opacity: 0.69;
-      line-height: 24px;
-    }
-  }
-  .demo-color-box-group {
-    .demo-color-box {
-      border-radius: 0;
-      margin: 0;
-    }
-    .demo-color-box:first-child {
-      border-radius: 4px 4px 0 0;
-    }
-    .demo-color-box:last-child {
-      border-radius: 0 0 4px 4px;
-    }
-  }
-  .bg-blue {
-    background-color: #409EFF;
-  }
-
-  .bg-success {
-    background-color: #13CE66;
-  }
-  .bg-warning {
-    background-color: #f7ba2a;
-  }
-  .bg-danger {
-    background-color: #ff4949;
-  }
-  .bg-info {
-    background-color: #909399;
-  }
-
-  .bg-text-primary {
-    background-color: #303133;
-  }
-  .bg-text-regular {
-    background-color: #606266;
-  }
-  .bg-text-secondary {
-    background-color: #909399;
-  }
-  .bg-text-placeholder {
-    background-color: #c0c4cc;
-  }
-
-  .bg-border-base {
-    background-color: #dcdfe6;
-  }
-  .bg-border-light {
-    background-color: #e4e7ed;
-  }
-  .bg-border-lighter {
-    background-color: #ebeef5;
-  }
-  .bg-border-extra-light {
-    background-color: #f2f6fc;
-  }
-
-  [class*=" bg-border-"] {
-    color: #303133;
-  }
+.demo-border .text {
+  width: 15%;
+}
+.demo-border .line {
+  width: 70%;
+}
+.demo-border .line div{
+  width: 100%;
+  height: 0;
+  border: 1px solid #EEE;
+}
+.demo-border .line .dashed{ 
+  border: 2px dashed #EEE;
+}
+.demo-shadow {
+  height: 100px;
+  width: 50%;
+  border: 1px solid #eee;
+}
+.demo-shadow-text {
+  line-height: 50px;
+  color: #666;
+  font-size: 14px;
+}
+.demo-radius .title{
+  color: #666;
+  font-size: 18px;
+  margin: 10px 0;
+}
+.demo-radius .value{
+  color: #333;
+  font-size: 16px;
+  margin: 10px 0;
+}
+.demo-radius .radius {
+  height: 60px;
+  width: 70%;
+  border: 1px solid #D7DAE2;
+  border-radius: 0;
+  margin-top: 20px;
+}
+.demo-radius .radius-30 {
+  border-radius: 30px;
+}
 </style>
 
 ## Border
-Element uses a specific set of palettes to specify colors to provide a consistent look and feel for the products you build.
 
-### Main Color
+We standardize the borders that can be used in buttons, cards, pop-ups and other components.
 
-The main color of Element is bright and friendly blue.
+### Border
 
-<el-row :gutter="12">
+There are few border styles to choose.
+
+<table class="demo-border">
+  <tbody>
+    <tr>
+      <td class="text">Name</td>
+      <td class="text">Thickness</td>
+      <td class="line">Demo</td>
+    </tr>
+    <tr>
+      <td class="text">Solid</td>
+      <td class="text">1px</td>
+      <td class="line">
+        <div></div>
+      </td>
+    </tr>
+    <tr>
+      <td class="text">Dashed</td>
+      <td class="text">2px</td>
+      <td class="line">
+        <div class="dashed"></div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+### Radius
+
+There are few radius styles to choose.
+
+<el-row :gutter="12" class="demo-radius">
   <el-col :span="6" :xs="{span: 12}">
-    <div class="demo-color-box bg-blue">Blue<div class="value">#409EFF</div></div>
+    <div class="title">No Radius</div>
+    <div class="value">border-radius: 0px</div>
+    <div class="radius"></div>
+  </el-col>
+  <el-col :span="6" :xs="{span: 12}">
+    <div class="title">Small Radius</div>
+    <div class="value">border-radius: {{borderRadiusSmall}}</div>
+    <div 
+      class="radius" 
+      :style="{ borderRadius: borderRadiusSmall }"
+    ></div>
+  </el-col>
+  <el-col :span="6" :xs="{span: 12}">
+    <div class="title">Large Radius</div>
+    <div class="value">border-radius: {{borderRadiusBase}}</div>
+    <div 
+      class="radius"
+      :style="{ borderRadius: borderRadiusBase }"
+    ></div>
+  </el-col>
+  <el-col :span="6" :xs="{span: 12}">
+    <div class="title">Round Radius</div>
+    <div class="value">border-radius: 30px</div>
+    <div class="radius radius-30"></div>
   </el-col>
 </el-row>
 
-### Secondary Color
+### Shadow
 
-Besides the main color, you need to use different scene colors in different scenarios (for example, dangerous color indicates dangerous operation)
+There are few shaodw styles to choose.
 
-<el-row :gutter="12">
-  <el-col :span="6" :xs="{span: 12}">
-    <div class="demo-color-box bg-success">Success<div class="value">#67C23A</div></div>
-  </el-col>
-  <el-col :span="6" :xs="{span: 12}">
-    <div class="demo-color-box bg-warning">Warning<div class="value">#E6A23C</div></div>
-  </el-col>
-  <el-col :span="6" :xs="{span: 12}">
-    <div class="demo-color-box bg-danger">Danger<div class="value">#F56C6C</div></div>
-  </el-col>
-  <el-col :span="6" :xs="{span: 12}">
-    <div class="demo-color-box bg-info">Info<div class="value">#909399</div></div>
-  </el-col>
-</el-row>
+<div 
+class="demo-shadow"
+:style="{ boxShadow: boxShadowBase }"
+></div>
+<span class="demo-shadow-text">Basic Shaodw box-shadow: {{boxShadowBase}}</span>
 
-### Neutral Color
-
-Neutral colors are for text, background and border colors. You can use different neutral colors to represent the hierarchical structure.
-
-<el-row :gutter="12">
-  <el-col :span="6" :xs="{span: 12}">
-    <div class="demo-color-box-group">
-      <div class="demo-color-box bg-text-primary">Primary Text<div class="value">#303133</div></div>
-      <div class="demo-color-box bg-text-regular">Regular Text<div class="value">#606266</div></div>
-      <div class="demo-color-box bg-text-secondary">Secondary Text<div class="value">#909399</div></div>
-      <div class="demo-color-box bg-text-placeholder">Placeholder Text<div class="value">#C0C4CC</div></div>
-    </div>
-  </el-col>
-  <el-col :span="6" :xs="{span: 12}">
-    <div class="demo-color-box-group">
-      <div class="demo-color-box bg-border-base">Base Border<div class="value">#DCDFE6</div></div>
-      <div class="demo-color-box bg-border-light">Light Border<div class="value">#E4E7ED</div></div>
-      <div class="demo-color-box bg-border-lighter">Lighter Border<div class="value">#EBEEF5</div></div>
-      <div class="demo-color-box bg-border-extra-light">Extra Light Border<div class="value">#F2F6FC</div></div>
-    </div>
-  </el-col>
-</el-row>
+<div 
+class="demo-shadow"
+:style="{ boxShadow: boxShadowLight }"
+></div>
+<span class="demo-shadow-text">Light Shadow box-shadow: {{boxShadowLight}}</span>
